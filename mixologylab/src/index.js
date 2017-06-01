@@ -25,6 +25,14 @@ import './index.css';
 
 class Root extends React.Component{
     //insert State
+    constructor () {
+      super()
+      this.state = {
+        baseAlcohol: '',
+        tasteFilter: '',
+        drinkList: {},
+      }
+    }
 
     render(){
         return(
