@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
+
+
+//display assets
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,11 +12,17 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Mixology Lab</h2>
+            <div className="devNav">
+                <Link className="devLink" to="/">Home</Link>
+                <Link className="devLink" to="/customize">Filter</Link>
+                <Link className="devLink" to="/drink-menu">Drink-List</Link>
+                <Link className="devLink" to="/drink/:somename">Drink-Item</Link>
+            </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+            {this.props.children}
+        </div>
       </div>
     );
   }

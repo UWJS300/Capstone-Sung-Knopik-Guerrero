@@ -9,7 +9,6 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
@@ -21,4 +20,25 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.devNav{
+  width: 60%;
+  min-width: 400px;
+  display: flex;
+  margin: auto;
+
+}
+
+
+
+.devLink{
+  flex: 1 1 0;
+  color: peachpuff;
+  text-decoration: none;
+}
+
+.devLink:visited{
+  color: peachpuff;
+  text-decoration: none;
 }
