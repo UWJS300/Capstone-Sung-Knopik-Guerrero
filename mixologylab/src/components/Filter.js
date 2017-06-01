@@ -4,17 +4,13 @@
  */
 import React from 'react'
 import './Filter.css'
-<<<<<<< HEAD
 import { withRouter } from 'react-router-dom'
-=======
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
 import PropTypes from 'prop-types'
 
 class FilterPage extends React.Component{
 
     static propTypes = {
       updateTaste : PropTypes.func,
-<<<<<<< HEAD
       baseAlcohol: PropTypes.string
     };
 
@@ -32,13 +28,6 @@ class FilterPage extends React.Component{
     render(){
 
         const selectedBaseAlcohol = this.props.baseAlcohol
-=======
-    };
-
-    render(){
-
-        const { updateTaste } = this.props
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
         const tasteFilterStrings = [
           'Berry',
           'Bitter',
@@ -52,11 +41,7 @@ class FilterPage extends React.Component{
         ]
         const tasteFilterList = tasteFilterStrings.map(item => {
           return <li key={item}>
-<<<<<<< HEAD
             <form method='POST' action='/customize' onSubmit={this.routeWithNewTaste}>
-=======
-            <form method='POST' action='/customize' onSubmit={updateTaste}>
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
               <input type='hidden' value={item} />
               <button type='submit'>{item}</button>
             </form>
@@ -66,10 +51,7 @@ class FilterPage extends React.Component{
         return(
             <div>
                 <p>Filter Page</p>
-<<<<<<< HEAD
                 <p>Selected Base Alcohol: {selectedBaseAlcohol}</p>
-=======
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
                 <p>Taste</p>
                 <ul>
                   {tasteFilterList}
@@ -80,8 +62,4 @@ class FilterPage extends React.Component{
 
 }
 
-<<<<<<< HEAD
 export default withRouter(FilterPage)
-=======
-export default FilterPage
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a

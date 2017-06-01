@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import {
 BrowserRouter as Router,
 Switch,
-<<<<<<< HEAD
 Route,
-=======
-Route
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
 } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 
@@ -26,18 +22,12 @@ class Root extends React.Component{
     constructor () {
       super()
       this.state = {
-<<<<<<< HEAD
         baseAlcohol: 'None',
         tasteFilter: 'None',
-=======
-        baseAlcohol: '',
-        tasteFilter: '',
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
         drinkList: {},
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
       this.updateTaste = this.updateTaste.bind(this)
-<<<<<<< HEAD
       this.searchAPI = this.searchAPI.bind(this)
     }
 
@@ -59,24 +49,6 @@ class Root extends React.Component{
       return `${base} ${taste}`
     }
 
-=======
-    }
-
-    updateBaseAlcohol (e) {
-      e.preventDefault()
-      this.setState({
-        baseAlcohol : e.target.children[0].value
-      })
-    }
-
-    updateTaste (e) {
-      e.preventDefault()
-      this.setState({
-        tasteFilter : e.target.children[0].value
-      })
-    }
-
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
     render(){
         return(
             <Router>
@@ -90,7 +62,6 @@ class Root extends React.Component{
                         <Route exact path="/customize" render={props=>(
                             <Filter
                               updateTaste={this.updateTaste}
-<<<<<<< HEAD
                               baseAlcohol={this.state.baseAlcohol}
                             />
                             )}/>
@@ -100,12 +71,6 @@ class Root extends React.Component{
                               tasteFilter={this.state.tasteFilter}
                               searchAPI={this.searchAPI}
                             />
-=======
-                            />
-                            )}/>
-                        <Route exact path="/drink-menu" render={props=>(
-                            <DrinkList/>
->>>>>>> 65da61f4cdd93c02bc71a06f7537dda0567ed12a
                             )}/>
                         <Route path="/drink/:drink" render={props=> {
                             const drink = props.match.params.drink
