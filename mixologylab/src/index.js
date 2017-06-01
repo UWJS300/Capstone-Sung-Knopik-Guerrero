@@ -37,9 +37,8 @@ class Root extends React.Component{
 
     updateBaseAlcohol (e) {
       e.preventDefault()
-      console.log(e)
       this.setState({
-        baseAlcohol : e
+        baseAlcohol : e.target.children[0].value
       })
     }
 
@@ -48,8 +47,10 @@ class Root extends React.Component{
             <Router>
                 <App>
                     <Switch>
-                        <Route exact path="/" render={props=>(
-                            <Home updateBaseAlcohol={this.state.updateBaseAlcohol}/>
+                        <Route exact path="/" render={props => (
+                            <Home
+                              updateBaseAlcohol={this.updateBaseAlcohol}
+                            />
                             )}/>
                         <Route exact path="/customize" render={props=>(
                             <Filter/>

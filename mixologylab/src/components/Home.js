@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import './Home.css'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class HomePage extends React.Component{
@@ -25,7 +25,10 @@ class HomePage extends React.Component{
         ]
         const baseAlcoholList = baseAlcoholStrings.map(item => {
           return <li key={item}>
-            <Link to={`/customize`}>{item}</Link>
+            <form method='POST' action='/customize' onSubmit={updateBaseAlcohol}>
+              <input type='hidden' value={item} />
+              <button type='submit'>{item}</button>
+            </form>
           </li>
         })
 
