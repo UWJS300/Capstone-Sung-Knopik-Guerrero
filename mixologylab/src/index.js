@@ -17,12 +17,6 @@ import DrinkList from './components/DrinkList'
 //import css
 import './index.css';
 
-
-
-
-
-
-
 class Root extends React.Component{
     //insert State
     constructor () {
@@ -33,12 +27,20 @@ class Root extends React.Component{
         drinkList: {},
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
+      this.updateTaste = this.updateTaste.bind(this)
     }
 
     updateBaseAlcohol (e) {
       e.preventDefault()
       this.setState({
         baseAlcohol : e.target.children[0].value
+      })
+    }
+
+    updateTaste (e) {
+      e.preventDefault()
+      this.setState({
+        tasteFilter : e.target.children[0].value
       })
     }
 
@@ -53,7 +55,9 @@ class Root extends React.Component{
                             />
                             )}/>
                         <Route exact path="/customize" render={props=>(
-                            <Filter/>
+                            <Filter
+                              updateTaste={this.updateTaste}
+                            />
                             )}/>
                         <Route exact path="/drink-menu" render={props=>(
                             <DrinkList/>
@@ -69,7 +73,6 @@ class Root extends React.Component{
     }
 
 }
-
 
 ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();

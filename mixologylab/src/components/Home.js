@@ -1,5 +1,6 @@
 /**
  * Created by eddiemac on 5/26/2017.
+ * Edited by samguerrero on 5/31/2017.
  */
 import React from 'react'
 import './Home.css'
