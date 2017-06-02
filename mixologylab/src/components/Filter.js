@@ -1,6 +1,8 @@
 /**
  * Created by eddiemac on 5/26/2017.
  * Edited by samguerrero on 5/31/2017.
+ * Edited by hafgan (Cliff Knopik) on 6/1/17 
+	- created get JSON file option and loop to populate list
  */
 import React from 'react'
 import './Filter.css'
@@ -27,8 +29,23 @@ class FilterPage extends React.Component{
 
     render(){
 
+	
+
+	
+	
         const selectedBaseAlcohol = this.props.baseAlcohol
-        const tasteFilterStrings = [
+		
+		// Get the overall object from the JSON file - Cliff Knopik 6/1/17
+		const tastesObject = require('../data/tastes.json'); 
+		
+		// log to show there is an array of objects - Cliff Knopik 6/1/17
+		console.log("Tastes:");
+		console.log(tastesObject.result);
+
+		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
+		const tasteFilterStrings = tastesObject.result;
+		
+       /* const tasteFilterStrings = [
           'Berry',
           'Bitter',
           'Fresh',
@@ -39,11 +56,13 @@ class FilterPage extends React.Component{
           'Spirits Palpable',
           'Sweet',
         ]
+		*/
+		
         const tasteFilterList = tasteFilterStrings.map(item => {
-          return <li key={item}>
+          return <li key={item.id}>
             <form method='POST' action='/customize' onSubmit={this.routeWithNewTaste}>
-              <input type='hidden' value={item} />
-              <button type='submit'>{item}</button>
+              <input type='hidden' value={item.id} />
+              <button type='submit'>{item.name}</button>
             </form>
           </li>
         })
@@ -58,6 +77,8 @@ class FilterPage extends React.Component{
                 </ul>
             </div>
         )
+		
+		
     }
 
 }
