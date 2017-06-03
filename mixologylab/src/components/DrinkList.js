@@ -1,5 +1,6 @@
 /**
  * Created by eddiemac on 5/26/2017.
+ * Added drinkList and sorting functions 6/3/17. Cliff Knopik
  */
 import React from 'react'
 import './DrinkList.css'
@@ -18,6 +19,45 @@ class DrinkListPage extends React.Component{
 
     render(){
 
+		// Sort solutions found here: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+		// Use like this: SomeObject.sort(dynamicSort("aproperty"))
+		function dynamicSort(property) {
+			var sortOrder = 1;
+			if(property[0] === "-") {
+				sortOrder = -1;
+				property = property.substr(1);
+			}
+		return function (a,b) {
+			var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+			return result * sortOrder;
+			}
+		}
+	
+	
+		// Not currently tested or used - but included here for future expansion of features 6/3/17 Cliff Knopik
+		// Use like this: SomeObject.sort(dynamicSortMultiple("aproperty1", "-aproperty2"));
+		// - is used for ascending or descending
+		function dynamicSortMultiple() {
+			/*
+			* save the arguments object as it will be overwritten
+			* note that arguments object is an array-like object
+			* consisting of the names of the properties to sort by
+			*/
+			var props = arguments;
+			return function (obj1, obj2) {
+				var i = 0, result = 0, numberOfProperties = props.length;
+				/* try getting a different result from 0 (equal)
+				* as long as we have extra properties to compare
+				*/
+				while(result === 0 && i < numberOfProperties) {
+					result = dynamicSort(props[i])(obj1, obj2);
+					i++;
+				}
+				return result;
+			}
+		}
+		
+		
         const { searchAPI, baseAlcohol } = this.props
 		
 		// temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
@@ -34,6 +74,20 @@ class DrinkListPage extends React.Component{
 
 		// Assign the results - the array of drinks objects - Cliff Knopik 6/2/17
 		const drinkListResults = drinkListObject.result;
+		
+		// uncomment these below to test out different sorting
+		// ascending by rating
+		//drinkListResults.sort(dynamicSort("rating"))
+		
+		// descending by rating
+		//drinkListResults.sort(dynamicSort("-rating"))
+		
+		// ascending by name
+		//drinkListResults.sort(dynamicSort("name"))
+		
+		// descending by name
+		drinkListResults.sort(dynamicSort("-name"))
+		
 		
 		const drinkList = drinkListResults.map(item => {
           return <tr>
