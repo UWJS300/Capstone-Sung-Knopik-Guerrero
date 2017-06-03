@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Axios from 'axios';
+import $ from "jquery";
 import {
 BrowserRouter as Router,
 Switch,
@@ -34,18 +34,12 @@ class Root extends React.Component{
     }
 
     updateBaseAlcohol (baseAlcoholName) {
-      return Axios.get('https://api.fulcrumapp.com/api/v2/query?token=737e9590b849b70d7c08e99166d2343ec0c08f913b2ffc4325ded9103bf815b144e1dad4fc47b629&format=json&q=SELECT count(*)FROM"082fc823-c74d-4222-86c0-9fca7166bc94";')
-        .then((results) =>
-          //console.log(results)
-          this.setState({
-            baseAlcoholAPIReturn : results.data,
-            baseAlcohol : baseAlcoholName,
-          })
-          )
-        .catch((error) =>
-          //console.log(error)
-          error
-          )
+      $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=6b80f06201e8408f9502964f3c2fdd4c', ( result ) => {
+        this.setState({
+          baseAlcoholAPIReturn : result,
+          baseAlcohol : baseAlcoholName,
+        })
+      }, 'jsonp');
     }
 
     updateTaste (tasteName) {
