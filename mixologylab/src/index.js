@@ -1,3 +1,9 @@
+/**
+ * Edited by samguerrero on 5/31/2017.
+  - added state and state updating functions
+ * Edited by samguerrero on 6/3/2017.
+  - display and filter api return function
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
@@ -33,7 +39,11 @@ class Root extends React.Component{
       this.searchAPI = this.searchAPI.bind(this)
     }
 
+    //when one of the base alcohol is clicked, it submits a form, which this function is the onSubmit for
+    //this function was passed to the home.js through props
     updateBaseAlcohol (baseAlcoholName) {
+      //jquery api call with jsonp
+      //grabs the data then sets returned data as state
       $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=6b80f06201e8408f9502964f3c2fdd4c', ( result ) => {
         this.setState({
           baseAlcoholAPIReturn : result,
@@ -42,6 +52,8 @@ class Root extends React.Component{
       }, 'jsonp');
     }
 
+    //when one of the taste is clicked, it submits a form, which this function is the onSubmit for
+    //this function was passed to the filter.js through props
     updateTaste (tasteName) {
       this.setState({
         tasteFilter : tasteName
@@ -66,6 +78,7 @@ class Root extends React.Component{
                             )}/>
                         <Route exact path="/customize" render={props=>(
                             <Filter
+                              baseAlcoholAPIReturn={this.state.baseAlcoholAPIReturn}
                               updateTaste={this.updateTaste}
                               baseAlcohol={this.state.baseAlcohol}
                             />
