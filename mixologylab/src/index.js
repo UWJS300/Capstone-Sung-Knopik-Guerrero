@@ -29,9 +29,9 @@ class Root extends React.Component{
     constructor () {
       super()
       this.state = {
-        baseAlcohol: 'None',
-        tasteFilter: 'None',
-        drinksLists: [1,2,3],
+        baseAlcohol: 'LOADING...',
+        tasteFilter: 'LOADING...',
+        drinksLists: [],
         baseAlcoholAPIReturn: {},
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)

@@ -35,8 +35,8 @@ class FilterPage extends React.Component{
 
 
 
-        const selectedBaseAlcohol = this.props.baseAlcohol
-        const selectedBaseAlcoholCount = this.props.baseAlcoholAPIReturn.totalResult
+    const selectedBaseAlcohol = this.props.baseAlcohol
+    const selectedBaseAlcoholCount = this.props.baseAlcoholAPIReturn.totalResult
 
 		// Get the overall object from the JSON file - Cliff Knopik 6/1/17
 		const tastesObject = require('../data/tastes.json');
@@ -74,10 +74,10 @@ class FilterPage extends React.Component{
             <div>
                 <p>Filter Page</p>
                 <p>Selected Base Alcohol: {selectedBaseAlcohol}</p>
-                <p>Amount in category: {selectedBaseAlcoholCount ? selectedBaseAlcoholCount : 0}</p>
-                <p>Taste</p>
+                <p>Amount in category: {selectedBaseAlcoholCount ? selectedBaseAlcoholCount : 'LOADING...'}</p>
+                <p>Taste:</p>
                 <ul>
-                  {tasteFilterList}
+                  {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
             </div>
         )
