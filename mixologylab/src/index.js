@@ -25,15 +25,21 @@ class Root extends React.Component{
         baseAlcohol: 'None',
         tasteFilter: 'None',
         drinkList: {},
+        baseAlcoholAPIReturn: {},
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
       this.updateTaste = this.updateTaste.bind(this)
       this.searchAPI = this.searchAPI.bind(this)
     }
 
+    storeBaseAlcoholAPIReturn () {
+      return 'samiam'
+    }
+
     updateBaseAlcohol (baseAlcoholName) {
       this.setState({
-        baseAlcohol : baseAlcoholName
+        baseAlcohol : baseAlcoholName,
+        baseAlcoholAPIReturn : this.storeBaseAlcoholAPIReturn()
       })
     }
 
