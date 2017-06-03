@@ -11,11 +11,8 @@ class DrinkListPage extends React.Component{
     static propTypes = {
       baseAlcohol: PropTypes.string,
       tasteFilter: PropTypes.string,
-      searchAPI : PropTypes.func,
+      drinksLists: PropTypes.array,
     };
-	
-	
-
 
     render(){
 
@@ -32,8 +29,7 @@ class DrinkListPage extends React.Component{
 			return result * sortOrder;
 			}
 		}
-	
-	
+
 		// Not currently tested or used - but included here for future expansion of features 6/3/17 Cliff Knopik
 		// Use like this: SomeObject.sort(dynamicSortMultiple("aproperty1", "-aproperty2"));
 		// - is used for ascending or descending
@@ -56,41 +52,40 @@ class DrinkListPage extends React.Component{
 				return result;
 			}
 		}
-		
-		
-        const { searchAPI, baseAlcohol } = this.props
-		
+
+    const { tasteFilter, baseAlcohol, drinksLists } = this.props
+
 		// temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
         // const searchAPIdrinkList = searchAPI()
 
 		// Get the overall object from the JSON file.
 		// This is a temporary JSON call for testing the sort - the actual object returned
 		// from the filters will replace this. - Cliff Knopik 6/2/17
-		const drinkListObject = require('../data/tempdrinklist.json'); 
-		
+		//const drinkListObject = require('../data/tempdrinklist.json');
+
 		// log to show there is an array of objects - Cliff Knopik 6/2/17
-		console.log("Drink List:");
-		console.log(drinkListObject.result);
+		// console.log("Drink List:");
+		// console.log(drinkListObject.result);
 
 		// Assign the results - the array of drinks objects - Cliff Knopik 6/2/17
-		const drinkListResults = drinkListObject.result;
-		
+		const drinkListResults = drinksLists;
+
 		// uncomment these below to test out different sorting
 		// ascending by rating
 		//drinkListResults.sort(dynamicSort("rating"))
-		
+
 		// descending by rating
 		//drinkListResults.sort(dynamicSort("-rating"))
-		
+
 		// ascending by name
 		//drinkListResults.sort(dynamicSort("name"))
-		
+
 		// descending by name
 		drinkListResults.sort(dynamicSort("-name"))
-		
-		
+
+
 		const drinkList = drinkListResults.map(item => {
-          return <tr>
+          return <tr key={item.id}>
             <td >{item.name} </td><td >{item.rating} </td><td >{item.descriptionPlain}</td></tr>
         })
 
@@ -99,7 +94,7 @@ class DrinkListPage extends React.Component{
             <div>
                 <p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
-                <p>Selected Taste: {baseAlcohol}</p>		
+                <p>Selected Taste: {baseAlcohol}</p>
 				<p>API Return: {searchAPIdrinkList}</p>
 
             </div>
@@ -109,7 +104,8 @@ class DrinkListPage extends React.Component{
             <div>
                 <p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
-                <p>Selected Taste: {baseAlcohol}</p>
+                <p>Selected Taste: {tasteFilter}</p>
+                <p>Drinks returned: {drinksLists.length}</p>
 				<table>
 				<thead>
 				<tr><th>NAME</th><th>RATING</th><th>DESCRIPTION</th></tr>

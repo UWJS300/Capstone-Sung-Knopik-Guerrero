@@ -31,12 +31,11 @@ class Root extends React.Component{
       this.state = {
         baseAlcohol: 'None',
         tasteFilter: 'None',
-        drinkList: {},
+        drinksLists: [1,2,3],
         baseAlcoholAPIReturn: {},
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
       this.updateTaste = this.updateTaste.bind(this)
-      this.searchAPI = this.searchAPI.bind(this)
     }
 
     //when one of the base alcohol is clicked, it submits a form, which this function is the onSubmit for
@@ -55,15 +54,17 @@ class Root extends React.Component{
     //when one of the taste is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the filter.js through props
     updateTaste (tasteName) {
-      this.setState({
-        tasteFilter : tasteName
+      const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
+      const filteredDrinks = allDrinksUnderBase.filter(function(item) {
+        const allTastes = item.tastes.map(function(mapitem) {
+          return mapitem.id
+        })
+        return allTastes.includes(tasteName)
       })
-    }
-
-    searchAPI () {
-      const taste = this.state.tasteFilter
-      const base = this.state.baseAlcohol
-      return `${base} ${taste}`
+      this.setState({
+        drinksLists: filteredDrinks,
+        tasteFilter: tasteName
+      })
     }
 
     render(){
@@ -87,7 +88,7 @@ class Root extends React.Component{
                             <DrinkList
                               baseAlcohol={this.state.baseAlcohol}
                               tasteFilter={this.state.tasteFilter}
-                              searchAPI={this.searchAPI}
+                              drinksLists={this.state.drinksLists}
                             />
                             )}/>
                         <Route path="/drink/:drink" render={props=> {
