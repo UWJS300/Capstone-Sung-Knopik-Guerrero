@@ -40,8 +40,8 @@ class FilterPage extends React.Component{
 		const tastesObject = require('../data/tastes.json');
 
 		// log to show there is an array of objects - Cliff Knopik 6/1/17
-		console.log("Tastes:");
-		console.log(tastesObject.result);
+		//console.log("Tastes:");
+		//console.log(tastesObject.result);
 
 		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
 		const tasteFilterStrings = tastesObject.result;
