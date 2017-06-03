@@ -1,7 +1,8 @@
 /**
  * Created by eddiemac on 5/26/2017.
  * Edited by samguerrero on 5/31/2017.
-  * Edited by hafgan (Cliff Knopik) on 6/1/17 
+    - added state and state updating buttons
+  * Edited by hafgan (Cliff Knopik) on 6/1/17
 	- created get JSON file option and loop to populate list
  */
 import React from 'react'
@@ -29,11 +30,11 @@ class HomePage extends React.Component{
     render(){
 
 		// Get the overall object from the JSON file - Cliff Knopik 6/1/17
-		const basespiritsObject = require('../data/basespirits.json'); 
-		
+		const basespiritsObject = require('../data/basespirits.json');
+
 		// log to show there is an array of objects - Cliff Knopik 6/1/17
-		console.log("BaseSpirits:");
-		console.log(basespiritsObject.result);
+		//console.log("BaseSpirits:");
+		//console.log(basespiritsObject.result);
 
 		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
 		const baseAlcoholStrings = basespiritsObject.result;
@@ -47,7 +48,7 @@ class HomePage extends React.Component{
           'Whisky',
         ]
 		*/
-		
+
         const baseAlcoholList = baseAlcoholStrings.map(item => {
             return <li key={item.type}>
               <form method='POST' action='/customize' onSubmit={this.routeWithNewBaseAlcohol}>

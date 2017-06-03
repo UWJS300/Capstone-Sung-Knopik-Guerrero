@@ -1,7 +1,8 @@
 /**
  * Created by eddiemac on 5/26/2017.
  * Edited by samguerrero on 5/31/2017.
- * Edited by hafgan (Cliff Knopik) on 6/1/17 
+  - added state and state updating buttons
+ * Edited by hafgan (Cliff Knopik) on 6/1/17
 	- created get JSON file option and loop to populate list
  */
 import React from 'react'
@@ -13,7 +14,8 @@ class FilterPage extends React.Component{
 
     static propTypes = {
       updateTaste : PropTypes.func,
-      baseAlcohol: PropTypes.string
+      baseAlcohol: PropTypes.string,
+      baseAlcoholAPIReturn: PropTypes.object
     };
 
     constructor () {
@@ -29,22 +31,23 @@ class FilterPage extends React.Component{
 
     render(){
 
-	
 
-	
-	
-        const selectedBaseAlcohol = this.props.baseAlcohol
-		
+
+
+
+    const selectedBaseAlcohol = this.props.baseAlcohol
+    const selectedBaseAlcoholCount = this.props.baseAlcoholAPIReturn.totalResult
+
 		// Get the overall object from the JSON file - Cliff Knopik 6/1/17
-		const tastesObject = require('../data/tastes.json'); 
-		
+		const tastesObject = require('../data/tastes.json');
+
 		// log to show there is an array of objects - Cliff Knopik 6/1/17
-		console.log("Tastes:");
-		console.log(tastesObject.result);
+		//console.log("Tastes:");
+		//console.log(tastesObject.result);
 
 		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
 		const tasteFilterStrings = tastesObject.result;
-		
+
        /* const tasteFilterStrings = [
           'Berry',
           'Bitter',
@@ -57,7 +60,7 @@ class FilterPage extends React.Component{
           'Sweet',
         ]
 		*/
-		
+
         const tasteFilterList = tasteFilterStrings.map(item => {
           return <li key={item.id}>
             <form method='POST' action='/customize' onSubmit={this.routeWithNewTaste}>
@@ -71,14 +74,15 @@ class FilterPage extends React.Component{
             <div>
                 <p>Filter Page</p>
                 <p>Selected Base Alcohol: {selectedBaseAlcohol}</p>
-                <p>Taste</p>
+                <p>Amount in category: {selectedBaseAlcoholCount ? selectedBaseAlcoholCount : 'LOADING...'}</p>
+                <p>Taste:</p>
                 <ul>
-                  {tasteFilterList}
+                  {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
             </div>
         )
-		
-		
+
+
     }
 
 }
