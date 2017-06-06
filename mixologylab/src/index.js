@@ -93,7 +93,11 @@ class Root extends React.Component{
                             )}/>
                         <Route path="/drink/:drink" render={props=> {
                             const drink = props.match.params.drink
-                            return(<DrinkDetail drink={drink}/>)
+                            const drinkItem = this.state.drinksLists.filter((item) => item.id === drink)
+                            return(<DrinkDetail 
+                               drink={drink} 
+                               drinkItem={drinkItem}
+                               />)
                             }}/>
                     </Switch>
                 </App>
