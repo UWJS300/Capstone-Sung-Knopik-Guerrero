@@ -28,7 +28,7 @@
                     #43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%;
             background-repeat: no-repeat;
             background-size: 50% 50%;
-            transition: 1s;
+            transition: 1s linear;
         }
         .text{
             color:black;
@@ -44,7 +44,7 @@
 </head>
 <body>
 
-<div id="wheel" class="wheel" onmousemove="mouseToSpinWheel(event)">
+<div id="wheel" class="wheel" onmousemove="mouseToSpinWheel(event)" onmousedown="down=1" onmouseup="down=0">
 
 </div>
 
@@ -53,20 +53,33 @@
 <div class="text1" id="test">fdfdfdfds</div>
 <div class="text1" >x-coordinates: <span id="xco"></span></div>
 <div class="text1" >y-coordinates: <span id="yco"></span></div>
-
-
+<div class="text1" >Degrees: <span id="test1"></span></div>
+<div class="text1" >Degrees Mouse Down: <span id="test2"></span></div>
 <script>
 function inputUpdate(angle){
 document.getElementById("test").innerText = angle
 document.getElementById('wheel').style.transform = `rotate(${angle}deg)`
     }
 
+let x, y, absoluteDegree, down
+
+
 function mouseToSpinWheel(e){
-    let x = e.clientX;
-    let y = e.clientY;
+    const wheel = document.getElementById("wheel")
+    // x = cursor position - div offset - half div size
+    x = e.clientX - wheel.offsetLeft - (wheel.clientHeight)/2;
+    y = e.clientY - wheel.offsetTop - (wheel.clientWidth)/2;
+    if (down === 1){
+        absoluteDegree = Math.atan((y/x))*(180/Math.PI)
+
+    }
     document.getElementById("yco").innerText = y
     document.getElementById("xco").innerText = x
+    document.getElementById("test1").innerText = absoluteDegree
+    document.getElementById("test2").innerText = "d"
 }
+
+
 
 
 
