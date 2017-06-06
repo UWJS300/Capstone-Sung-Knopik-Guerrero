@@ -30,7 +30,7 @@ class Root extends React.Component{
       super()
       this.state = {
         baseAlcohol: 'LOADING...',
-        tasteFilter: 'LOADING...',
+        tasteFilter: [],
         drinksLists: [],
         baseAlcoholAPIReturn: {},
       }
@@ -54,16 +54,49 @@ class Root extends React.Component{
     //when one of the taste is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the filter.js through props
     updateTaste (tasteName) {
-      const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
-      const filteredDrinks = allDrinksUnderBase.filter(function(item) {
-        const allTastes = item.tastes.map(function(mapitem) {
-          return mapitem.id
+      //If the taste is already added to the state, remove it, otherwise add it
+      const newTasteState = this.state.tasteFilter
+      if (newTasteState.includes(tasteName)) {
+        const index = newTasteState.indexOf(tasteName)
+        newTasteState.splice(index, 1)
+      } else {
+        newTasteState.push(tasteName)
+      }
+      //
+      let filteredDrinks = []
+      if (newTasteState.length === 1) {
+        const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
+        const filteredDrinksForOne = allDrinksUnderBase.filter(function(item) {
+          const allTastes = item.tastes.map(function(mapitem) {
+            return mapitem.id
+          })
+          return allTastes.includes(newTasteState[0])
         })
-        return allTastes.includes(tasteName)
-      })
+        filteredDrinks = filteredDrinksForOne
+      } else if (newTasteState.length > 1) {
+        filteredDrinks = []
+        const drinklistUserMatch = []
+        const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
+        allDrinksUnderBase.forEach(function(value) {
+            const drinkTasteUserTasteMatch = []
+            const allTastes = value.tastes.map(function(mapitem) {
+              return mapitem.id
+            })
+            allTastes.forEach(function(item) {
+              if (newTasteState.includes(item)) {
+                drinkTasteUserTasteMatch.push(true)
+              }
+            })
+            if (allTastes.length === drinkTasteUserTasteMatch.length && newTasteState.length === allTastes.length) {
+              drinklistUserMatch.push(value)
+            }
+        })
+        filteredDrinks = drinklistUserMatch
+      }
+      //set the state of filtered api and checked taste list
       this.setState({
         drinksLists: filteredDrinks,
-        tasteFilter: tasteName
+        tasteFilter: newTasteState
       })
     }
 
@@ -81,6 +114,7 @@ class Root extends React.Component{
                             <Filter
                               baseAlcoholAPIReturn={this.state.baseAlcoholAPIReturn}
                               updateTaste={this.updateTaste}
+                              tasteFilter={this.state.tasteFilter}
                               baseAlcohol={this.state.baseAlcohol}
                             />
                             )}/>
