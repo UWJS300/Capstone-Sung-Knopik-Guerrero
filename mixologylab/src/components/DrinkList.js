@@ -3,16 +3,27 @@
  * Added drinkList and sorting functions 6/3/17. Cliff Knopik
  */
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './DrinkList.css'
 import PropTypes from 'prop-types'
 
 class DrinkListPage extends React.Component{
+
+    constructor(){
+        super()
+        this.redirectToDrinkDetail = this.redirectToDrinkDetail.bind(this)
+    }
 
     static propTypes = {
       baseAlcohol: PropTypes.string,
       tasteFilter: PropTypes.array,
       drinksLists: PropTypes.array,
     };
+
+    redirectToDrinkDetail(e, drinkName){
+        e.preventDefault()
+        this.props.history.push(`/drink/${drinkName}`)
+    }
 
     render(){
 
@@ -86,7 +97,7 @@ class DrinkListPage extends React.Component{
 
 		const drinkList = drinkListResults.map(item => {
           return <tr key={item.id}>
-            <td >{item.name} </td><td >{item.rating} </td><td >{item.descriptionPlain}</td></tr>
+            <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{item.descriptionPlain}</td></tr>
         })
 
 		/* temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
