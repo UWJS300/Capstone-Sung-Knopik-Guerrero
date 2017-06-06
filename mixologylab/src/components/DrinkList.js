@@ -16,7 +16,7 @@ class DrinkListPage extends React.Component{
 
     static propTypes = {
       baseAlcohol: PropTypes.string,
-      tasteFilter: PropTypes.string,
+      tasteFilter: PropTypes.array,
       drinksLists: PropTypes.array,
     };
 
