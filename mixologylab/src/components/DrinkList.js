@@ -6,6 +6,9 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './DrinkList.css'
 import PropTypes from 'prop-types'
+import seattleData from '../data/MenuDatabase'
+import MenuSquare from '../shared/MenuSquare'
+
 
 class DrinkListPage extends React.Component{
 
@@ -113,6 +116,15 @@ class DrinkListPage extends React.Component{
 		*/
         return(
             <div>
+                <div className="menucontainer">
+                <div className="flexcontainer">
+                    {Object.keys(seattleData).map(key=>{
+                        const squareItem = seattleData[key]
+                        return(<MenuSquare squareItem={squareItem}></MenuSquare>)
+                    })
+                    }
+                </div>
+                </div>
                 <p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
                 <p>Selected Taste: {tasteFilter}</p>
