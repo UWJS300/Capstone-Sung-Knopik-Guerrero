@@ -48,9 +48,7 @@ class FilterPage extends React.Component{
 		const tasteFilterStrings = tastesObject.result;
 
         const tasteFilterList = tasteFilterStrings.map(item => {
-          return <li key={item.id}>
-            <input type='checkbox' name={item.name} value={item.id}  onclick={this.routeWithNewTaste}/>{item.name}
-          </li>
+          return <button type='checkbox' name={item.name} value={item.id}  onClick={this.routeWithNewTaste}>{item.name}</button>
         })
 
         return(
