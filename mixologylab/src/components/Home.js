@@ -50,12 +50,11 @@ class HomePage extends React.Component{
 		*/
 
         const baseAlcoholList = baseAlcoholStrings.map(item => {
-            return <li key={item.type}>
-              <form method='POST' action='/customize' onSubmit={this.routeWithNewBaseAlcohol}>
+            return <form key={item.name} method='POST' action='/customize' onSubmit={this.routeWithNewBaseAlcohol}>
                 <input type='hidden' value={item.type} />
                 <button type='submit'>{item.name}</button>
               </form>
-            </li>
+
         })
 
         return(

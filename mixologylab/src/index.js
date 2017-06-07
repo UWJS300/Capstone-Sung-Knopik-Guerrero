@@ -116,6 +116,7 @@ class Root extends React.Component{
                               updateTaste={this.updateTaste}
                               tasteFilter={this.state.tasteFilter}
                               baseAlcohol={this.state.baseAlcohol}
+                              drinksLists={this.state.drinksLists}
                             />
                             )}/>
                         <Route exact path="/drink-menu" render={props=>(
