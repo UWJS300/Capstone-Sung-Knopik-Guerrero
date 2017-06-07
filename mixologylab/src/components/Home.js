@@ -59,7 +59,6 @@ class HomePage extends React.Component{
 
         return(
             <div>
-                <p>Home Page</p>
                 <ul>
                   {baseAlcoholList}
                 </ul>

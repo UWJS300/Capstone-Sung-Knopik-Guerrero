@@ -2,6 +2,15 @@ button {
   margin: 5px;
 }
 
+.result {
+  color: #fff;
+  background-color: #d3d3d3;
+  padding: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .berry {
   color: #a972cb;
   background-color: #fff;

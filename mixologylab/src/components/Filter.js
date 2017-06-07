@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import './Filter.css'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class FilterPage extends React.Component{
@@ -67,6 +67,7 @@ class FilterPage extends React.Component{
                 <ul>
                   {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
+                <Link to={'/drink-menu'} className={'result'}>Results</Link>
             </div>
         )
 
