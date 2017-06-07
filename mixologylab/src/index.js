@@ -128,8 +128,8 @@ class Root extends React.Component{
                         <Route path="/drink/:drink" render={props=> {
                             const drink = props.match.params.drink
                             const drinkItem = this.state.drinksLists.filter((item) => item.id === drink)
-                            return(<DrinkDetail 
-                               drink={drink} 
+                            return(<DrinkDetail
+                               drink={drink}
                                drinkItem={drinkItem}
                                />)
                             }}/>

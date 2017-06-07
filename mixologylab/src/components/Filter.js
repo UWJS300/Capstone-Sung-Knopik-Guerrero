@@ -16,101 +16,23 @@ class FilterPage extends React.Component{
       updateTaste : PropTypes.func,
       baseAlcohol: PropTypes.string,
       baseAlcoholAPIReturn: PropTypes.object,
-      tasteFilter: PropTypes.array
+      //tasteFilter: PropTypes.array
     };
 
     constructor () {
       super()
-      this.state = {
-        berry : false,
-        bitter : false,
-        fresh : false,
-        fruity : false,
-        herb : false,
-        sour : false,
-        spicy : false,
-        spiritsPalpable : false,
-        sweet : false
-      }
       this.routeWithNewTaste = this.routeWithNewTaste.bind(this)
-      this.whichState = this.whichState.bind(this)
     }
 
     routeWithNewTaste (e) {
       e.preventDefault()
       this.props.updateTaste(e.target.value)
-      switch (e.target.value) {
-        case 'berry':
-          console.log(this.state.berry)
-          if (this.state.berry !== true) { this.setState({ berry : true }) } else { this.setState({ berry : false }) }
-          break;
-        case 'bitter':
-          return this.state.bitter
-          break;
-        case 'fresh':
-          return this.state.fresh
-          break;
-        case 'fruity':
-          return this.state.fruity
-          break;
-        case 'herb':
-          return this.state.herb
-          break;
-        case 'sour':
-          return this.state.sour
-          break;
-        case 'spicy':
-          return this.state.spicy
-          break;
-        case 'spirits-palpable':
-          return this.state.spiritsPalpable
-          break;
-        case 'sweet':
-          return this.state.sweet
-          break;
-        default:
-          return false
-      }
       //this.props.history.push(`/drink-menu`)
-    }
-
-    whichState (itemName) {
-      switch (itemName) {
-        case 'berry':
-          return this.state.berry
-          break;
-        case 'bitter':
-          return this.state.bitter
-          break;
-        case 'fresh':
-          return this.state.fresh
-          break;
-        case 'fruity':
-          return this.state.fruity
-          break;
-        case 'herb':
-          return this.state.herb
-          break;
-        case 'sour':
-          return this.state.sour
-          break;
-        case 'spicy':
-          return this.state.spicy
-          break;
-        case 'spirits-palpable':
-          return this.state.spiritsPalpable
-          break;
-        case 'sweet':
-          return this.state.sweet
-          break;
-        default:
-          return false
-      }
     }
 
     render(){
 
-    //const { tasteFilter } = this.props
+    const { tasteFilter } = this.props
 
     const selectedBaseAlcohol = this.props.baseAlcohol
     const selectedBaseAlcoholCount = this.props.baseAlcoholAPIReturn.totalResult
@@ -125,24 +47,11 @@ class FilterPage extends React.Component{
 		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
 		const tasteFilterStrings = tastesObject.result;
 
-       /* const tasteFilterStrings = [
-          'Berry',
-          'Bitter',
-          'Fresh',
-          'Fruity',
-          'Herb',
-          'Sour',
-          'Spicy',
-          'Spirits Palpable',
-          'Sweet',
-        ]
-		*/
-
-      const tasteFilterList = tasteFilterStrings.map(item => {
-        return <li key={item.id}>
-          <input type='checkbox' name={item.name} value={item.id} checked={ this.whichState(item.id) } onChange={this.routeWithNewTaste}/>{item.name}
-        </li>
-      })
+        const tasteFilterList = tasteFilterStrings.map(item => {
+          return <li key={item.id}>
+            <input type='checkbox' name={item.name} value={item.id}  onclick={this.routeWithNewTaste}/>{item.name}
+          </li>
+        })
 
         return(
             <div>
