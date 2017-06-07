@@ -127,7 +127,7 @@ class DrinkListPage extends React.Component{
                 </div>
                 <p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
-                <p>Selected Taste: {tasteFilter}</p>
+                <p>Selected Taste: {tasteFilter.map(item => item + ',')}</p>
                 <p>Drinks returned: {drinksLists.length}</p>
 				<table>
 				<thead>

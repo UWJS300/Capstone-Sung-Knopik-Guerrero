@@ -2,8 +2,13 @@ button {
   margin: 5px;
 }
 
-.result {
+body {
+  background-color: #000;
   color: #fff;
+}
+
+.result {
+  color: #000;
   background-color: #d3d3d3;
   padding: 10px;
   font-size: 28px;
@@ -11,9 +16,14 @@ button {
   text-decoration: none;
 }
 
+.result:hover {
+  color: #d3d3d3;
+  background-color: #000;
+}
+
 .berry {
   color: #a972cb;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #a972cb;
   padding: 5px;
   font-size: 28px;
@@ -21,7 +31,7 @@ button {
 }
 
 .berryclicked {
-  color: #fff;
+  color: #000;
   background-color: #a972cb;
   border: solid 3px #a972cb;
   padding: 5px;
@@ -30,13 +40,13 @@ button {
 }
 
 .berry:hover {
-  color: #fff;
+  color: #000;
   background-color: #a972cb;
 }
 
 .bitter {
   color: #ef6eae;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #ef6eae;
   padding: 5px;
   font-size: 28px;
@@ -44,7 +54,7 @@ button {
 }
 
 .bitterclicked {
-  color: #fff;
+  color: #000;
   background-color: #ef6eae;
   border: solid 3px #ef6eae;
   padding: 5px;
@@ -53,13 +63,13 @@ button {
 }
 
 .bitter:hover {
-  color: #fff;
+  color: #000;
   background-color: #ef6eae;
 }
 
 .fresh {
   color: #ff7f82;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #ff7f82;
   padding: 5px;
   font-size: 28px;
@@ -67,7 +77,7 @@ button {
 }
 
 .freshclicked {
-  color: #fff;
+  color: #000;
   background-color: #ff7f82;
   border: solid 3px #ff7f82;
   padding: 5px;
@@ -76,13 +86,13 @@ button {
 }
 
 .fresh:hover {
-  color: #fff;
+  color: #000;
   background-color: #ff7f82;
 }
 
 .fruity {
   color: #ffa260;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #ffa260;
   padding: 5px;
   font-size: 28px;
@@ -90,7 +100,7 @@ button {
 }
 
 .fruityclicked {
-  color: #fff;
+  color: #000;
   background-color: #ffa260;
   border: solid 3px #ffa260;
   padding: 5px;
@@ -99,13 +109,13 @@ button {
 }
 
 .fruity:hover {
-  color: #fff;
+  color: #000;
   background-color: #ffa260;
 }
 
 .herb {
   color: #e4cb58;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #e4cb58;
   padding: 5px;
   font-size: 28px;
@@ -113,7 +123,7 @@ button {
 }
 
 .herbclicked {
-  color: #fff;
+  color: #000;
   background-color: #e4cb58;
   border: solid 3px #e4cb58;
   padding: 5px;
@@ -122,13 +132,13 @@ button {
 }
 
 .herb:hover {
-  color: #fff;
+  color: #000;
   background-color: #e4cb58;
 }
 
 .sour {
   color: #8fc866;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #8fc866;
   padding: 5px;
   font-size: 28px;
@@ -136,7 +146,7 @@ button {
 }
 
 .sourclicked {
-  color: #fff;
+  color: #000;
   background-color: #8fc866;
   border: solid 3px #8fc866;
   padding: 5px;
@@ -145,13 +155,13 @@ button {
 }
 
 .sour:hover {
-  color: #fff;
+  color: #000;
   background-color: #8fc866;
 }
 
 .spicy {
   color: #19bc8b;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #19bc8b;
   padding: 5px;
   font-size: 28px;
@@ -159,7 +169,7 @@ button {
 }
 
 .spicyclicked {
-  color: #fff;
+  color: #000;
   background-color: #19bc8b;
   border: solid 3px #19bc8b;
   padding: 5px;
@@ -168,13 +178,13 @@ button {
 }
 
 .spicy:hover {
-  color: #fff;
+  color: #000;
   background-color: #19bc8b;
 }
 
 .spirits-palpable {
   color: #e84848;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #e84848;
   padding: 5px;
   font-size: 28px;
@@ -182,7 +192,7 @@ button {
 }
 
 .spirits-palpableclicked {
-  color: #fff;
+  color: #000;
   background-color: #e84848;
   border: solid 3px #e84848;
   padding: 5px;
@@ -191,13 +201,13 @@ button {
 }
 
 .spirits-palpable:hover {
-  color: #fff;
+  color: #000;
   background-color: #e84848;
 }
 
 .sweet {
   color: #3399cc;
-  background-color: #fff;
+  background-color: #000;
   border: solid 3px #3399cc;
   padding: 5px;
   font-size: 28px;
@@ -205,7 +215,7 @@ button {
 }
 
 .sweetclicked {
-  color: #fff;
+  color: #000;
   background-color: #3399cc;
   border: solid 3px #3399cc;
   padding: 5px;
@@ -214,6 +224,6 @@ button {
 }
 
 .sweet:hover {
-  color: #fff;
+  color: #000;
   background-color: #3399cc;
 }
