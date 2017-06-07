@@ -7,16 +7,17 @@
  */
 import React from 'react'
 import './Filter.css'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class FilterPage extends React.Component{
 
     static propTypes = {
-      updateTaste : PropTypes.func,
+      updateTaste: PropTypes.func,
       baseAlcohol: PropTypes.string,
       baseAlcoholAPIReturn: PropTypes.object,
       //tasteFilter: PropTypes.array
+      drinksLists: PropTypes.array,
     };
 
     constructor () {
@@ -32,7 +33,7 @@ class FilterPage extends React.Component{
 
     render(){
 
-    const { tasteFilter } = this.props
+    const { tasteFilter, drinksLists } = this.props
 
     const selectedBaseAlcohol = this.props.baseAlcohol
     const selectedBaseAlcoholCount = this.props.baseAlcoholAPIReturn.totalResult
@@ -48,20 +49,27 @@ class FilterPage extends React.Component{
 		const tasteFilterStrings = tastesObject.result;
 
         const tasteFilterList = tasteFilterStrings.map(item => {
-          return <li key={item.id}>
-            <input type='checkbox' name={item.name} value={item.id}  onclick={this.routeWithNewTaste}/>{item.name}
-          </li>
+          return <button
+            type='submit'
+            name={item.name}
+            key={item.name}
+            value={item.id}
+            className={tasteFilter.includes(item.id) ? item.id + 'clicked' : item.id}
+            onClick={this.routeWithNewTaste}>{item.name}
+          </button>
         })
 
         return(
             <div>
-                <p>Filter Page</p>
-                <p>Selected Base Alcohol: {selectedBaseAlcohol}</p>
-                <p>Amount in category: {selectedBaseAlcoholCount ? selectedBaseAlcoholCount : 'LOADING...'}</p>
-                <p>Taste:</p>
+                <h1>Taste</h1>
+                <p>Selected Base Alcohol: {selectedBaseAlcohol.toUpperCase()}</p>
                 <ul>
                   {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
+                <br/>
+                <Link to={'/drink-menu'} className={'result'}>Display {drinksLists.length !== 0 ? drinksLists.length : 0}</Link>
+                <br/><br/><br/>
+                <Link to={'/'} className={'result'}>Select Base Alcohol</Link>
             </div>
         )
 

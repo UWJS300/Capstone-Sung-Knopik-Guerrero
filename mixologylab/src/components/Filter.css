@@ -1,0 +1,229 @@
+button {
+  margin: 5px;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.result {
+  color: #000;
+  background-color: #d3d3d3;
+  padding: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.result:hover {
+  color: #d3d3d3;
+  background-color: #000;
+}
+
+.berry {
+  color: #a972cb;
+  background-color: #000;
+  border: solid 3px #a972cb;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.berryclicked {
+  color: #000;
+  background-color: #a972cb;
+  border: solid 3px #a972cb;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.berry:hover {
+  color: #000;
+  background-color: #a972cb;
+}
+
+.bitter {
+  color: #ef6eae;
+  background-color: #000;
+  border: solid 3px #ef6eae;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.bitterclicked {
+  color: #000;
+  background-color: #ef6eae;
+  border: solid 3px #ef6eae;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.bitter:hover {
+  color: #000;
+  background-color: #ef6eae;
+}
+
+.fresh {
+  color: #ff7f82;
+  background-color: #000;
+  border: solid 3px #ff7f82;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.freshclicked {
+  color: #000;
+  background-color: #ff7f82;
+  border: solid 3px #ff7f82;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.fresh:hover {
+  color: #000;
+  background-color: #ff7f82;
+}
+
+.fruity {
+  color: #ffa260;
+  background-color: #000;
+  border: solid 3px #ffa260;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.fruityclicked {
+  color: #000;
+  background-color: #ffa260;
+  border: solid 3px #ffa260;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.fruity:hover {
+  color: #000;
+  background-color: #ffa260;
+}
+
+.herb {
+  color: #e4cb58;
+  background-color: #000;
+  border: solid 3px #e4cb58;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.herbclicked {
+  color: #000;
+  background-color: #e4cb58;
+  border: solid 3px #e4cb58;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.herb:hover {
+  color: #000;
+  background-color: #e4cb58;
+}
+
+.sour {
+  color: #8fc866;
+  background-color: #000;
+  border: solid 3px #8fc866;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.sourclicked {
+  color: #000;
+  background-color: #8fc866;
+  border: solid 3px #8fc866;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.sour:hover {
+  color: #000;
+  background-color: #8fc866;
+}
+
+.spicy {
+  color: #19bc8b;
+  background-color: #000;
+  border: solid 3px #19bc8b;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.spicyclicked {
+  color: #000;
+  background-color: #19bc8b;
+  border: solid 3px #19bc8b;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.spicy:hover {
+  color: #000;
+  background-color: #19bc8b;
+}
+
+.spirits-palpable {
+  color: #e84848;
+  background-color: #000;
+  border: solid 3px #e84848;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.spirits-palpableclicked {
+  color: #000;
+  background-color: #e84848;
+  border: solid 3px #e84848;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.spirits-palpable:hover {
+  color: #000;
+  background-color: #e84848;
+}
+
+.sweet {
+  color: #3399cc;
+  background-color: #000;
+  border: solid 3px #3399cc;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.sweetclicked {
+  color: #000;
+  background-color: #3399cc;
+  border: solid 3px #3399cc;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.sweet:hover {
+  color: #000;
+  background-color: #3399cc;
+}
