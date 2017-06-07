@@ -1,0 +1,51 @@
+.MenuSquareContainer{
+    flex: 1 1 0;
+    width:222px;
+    height:222px;
+}
+
+.MenuImageDiv{
+    width:222px;
+    height:222px;
+    background-color: lightseagreen;
+    position: relative;
+}
+
+/*This part shows the square*/
+
+.MenuImage{
+    width: 222px;
+    height: 222px;
+
+
+}
+
+
+
+
+/*This part is the hidden until on hover*/
+.MenuText{
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    width: 222px;
+    line-height:222px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+    opacity: 0;
+
+}
+
+.MenuText h3{
+    color: white;
+    display: inline-table;
+    vertical-align:middle;
+    line-height:100%;
+}
+
+/*Unhides on hover*/
+.MenuText:hover{
+    opacity: 1;
+}
+
