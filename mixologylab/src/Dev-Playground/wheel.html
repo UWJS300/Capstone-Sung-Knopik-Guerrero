@@ -28,7 +28,7 @@
                     #43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%;
             background-repeat: no-repeat;
             background-size: 50% 50%;
-            transition: 1s linear;
+            transition: 0.05s linear;
         }
         .text{
             color:black;
@@ -41,6 +41,7 @@
 
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 </head>
 <body>
 
@@ -54,34 +55,82 @@
 <div class="text1" >x-coordinates: <span id="xco"></span></div>
 <div class="text1" >y-coordinates: <span id="yco"></span></div>
 <div class="text1" >Degrees: <span id="test1"></span></div>
-<div class="text1" >Degrees Mouse Down: <span id="test2"></span></div>
+<div class="text1" >Starting Degree: <span id="test3"></span></div>
+<div class="text1" >Infinite Degree: <span id="test2"></span></div>
 <script>
+
+let x, y, startingDegree, absoluteDegree =0, absOffsetDegree, down
+let previousAbsOffsetDegree
+let numberRotationsCounter = 0
+let infiniteDegrees =0
+let crap
+
 function inputUpdate(angle){
 document.getElementById("test").innerText = angle
 document.getElementById('wheel').style.transform = `rotate(${angle}deg)`
     }
 
-let x, y, absoluteDegree, down
-
-
 function mouseToSpinWheel(e){
     const wheel = document.getElementById("wheel")
-    // x = cursor position - div offset - half div size
+    // Goal: grab x and y coordinates
+    // Notes: Position (0, 0) is at the center of the wheel
+    // Math: x-coordinate = cursor position - div offset - half div size
     x = e.clientX - wheel.offsetLeft - (wheel.clientHeight)/2;
     y = e.clientY - wheel.offsetTop - (wheel.clientWidth)/2;
-    if (down === 1){
-        absoluteDegree = Math.atan((y/x))*(180/Math.PI)
+    // Goal: Grab Starting Degree so we offset it
+    if (down != 1){
+        startingDegree = Math.atan2(y,x)*(180/Math.PI)
+        startingDegree = (-infiniteDegrees+startingDegree+360)%360
+    }
+
+    // Goal: Convert coordinates to 360 degree spin.
+    // Goal: Grab coordinates only while mouse is down
+    // Notes: Uses arc tangent to grab math. Since degrees goes from
+    // -180 degrees to +180 degrees, we use mod function.
+    if (down === 1) {
+        absoluteDegree = Math.atan2(y, x) * (180 / Math.PI)
+        absoluteDegree = (absoluteDegree + 360) % 360
+        //Goal: When going from 345 degrees to 15 degrees, add one to the
+        //rotation counter.  When going from 15 to 345, subtract one.
+
+        absOffsetDegree = (absoluteDegree - startingDegree + 360) % 360
+
+
+        if (previousAbsOffsetDegree > 345 && absOffsetDegree < 15) {
+            numberRotationsCounter++
+        }
+        if (previousAbsOffsetDegree < 15 && absOffsetDegree > 345) {
+            numberRotationsCounter--
+        }
+        //Goal: Record previous degree state so we know whether to
+        //increment numberRotationCounter.
+        previousAbsOffsetDegree = absOffsetDegree
+
+        infiniteDegrees = numberRotationsCounter * 360 + absOffsetDegree
 
     }
+
+
+
+
+
+
+
+    inputUpdate(infiniteDegrees)
+
+
+
+
+
+    //Debugging Tools
     document.getElementById("yco").innerText = y
     document.getElementById("xco").innerText = x
-    document.getElementById("test1").innerText = absoluteDegree
-    document.getElementById("test2").innerText = "d"
+    document.getElementById("test1").innerText = absOffsetDegree
+    document.getElementById("test2").innerText = infiniteDegrees
+    document.getElementById("test3").innerText = startingDegree
+
+
 }
-
-
-
-
 
 </script>
 </body>
