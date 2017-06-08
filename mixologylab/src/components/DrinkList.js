@@ -106,12 +106,36 @@ class DrinkListPage extends React.Component{
 			const sortBy = sortDrinkListBy;
 		
 			drinkListResults.sort(dynamicSort(sortBy))
+
+/* NO LONGER NEEDED - replaced with MenuSquare layout			
+		function createIngredients(ingredientsArray){
+		//console.log(ingredientsArray)
 		
+			const ingredientsList = ingredientsArray.map(ingredientObject => {
+				//console.log(ingredientObject)
+				return ingredientObject.textPlain + ', '
+
+			})
+			return ingredientsList
+		
+		} 
 
 		const drinkList = drinkListResults.map(item => {
           return <tr key={item.id}>
-            <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{item.descriptionPlain}</td></tr>
+            <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{createIngredients(item.ingredients)}</td></tr>
         })
+		
+		// The below HTML had been in the render area
+				<table>
+				<thead>
+				<tr><th>NAME</th><th>RATING</th><th>DESCRIPTION</th></tr>
+				</thead>
+				<tbody id="test">
+                  {drinkList}
+				</tbody>
+				</table>
+		
+*/
 
 		/* temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
 		 return(
@@ -135,34 +159,33 @@ class DrinkListPage extends React.Component{
 					<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button> 
 					<button type="submit" name="-name" value="-name" onClick={this.sortListBy}>Sort Name Descending</button> 
 					<button type="submit" name="rating" value="rating" onClick={this.sortListBy}>Sort Rating Ascending</button> 
-					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 
-																				
-                <p>Drink List Page</p>
+					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 																		
+				<div className="menucontainer">
+                <div className="flexcontainer">
+					{drinkListResults.map(item => {
+					const squareItem = item
+					return (<MenuSquare squareItem={squareItem}></MenuSquare>)
+					})
+					}
+                </div>
+                </div>
+				
+				<p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
                 <p>Selected Taste: {tasteFilter.map(item => item + ',')}</p>
                 <p>Drinks returned: {drinksLists.length}</p>
-				<table>
-				<thead>
-				<tr><th>NAME</th><th>RATING</th><th>DESCRIPTION</th></tr>
-				</thead>
-				<tbody id="test">
-                  {drinkList}
-				</tbody>
-				</table>
-				
-				                <div className="menucontainer">
-                <div className="flexcontainer">
-                    {Object.keys(seattleData).map(key=>{
-                        const squareItem = seattleData[key]
-                        return(<MenuSquare squareItem={squareItem}></MenuSquare>)
-                    })
-                    }
-                </div>
-                </div>
             </div>
         )
     }
 
 }
 
+/*   Sample from above return
+                    {Object.keys(seattleData).map(key=>{
+                        const squareItem = seattleData[key]
+                        return(<MenuSquare squareItem={squareItem}></MenuSquare>)
+                    })
+                    }
+					*/
+					
 export default DrinkListPage
