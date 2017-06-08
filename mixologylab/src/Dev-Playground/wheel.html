@@ -38,6 +38,13 @@
             color:white
         }
 
+        #drinkname{
+            font-size: 2em
+        }
+
+
+
+
 
 
     </style>
@@ -57,13 +64,61 @@
 <div class="text1" >Degrees: <span id="test1"></span></div>
 <div class="text1" >Starting Degree: <span id="test3"></span></div>
 <div class="text1" >Infinite Degree: <span id="test2"></span></div>
+<div class="text1">Drink Name: <span id="drinkname"></span></div>
 <script>
 
 let x, y, startingDegree, absoluteDegree =0, absOffsetDegree, down
 let previousAbsOffsetDegree
 let numberRotationsCounter = 0
 let infiniteDegrees =0
-let crap
+
+
+
+const  alcoholList = {
+    alcohol1: {
+        name: "Vodka",
+        abbr: "Vod",
+        color: "yellow",
+        startDegree: 0,
+        stopDegree: 59.999
+    },
+    alcohol2: {
+        name: "Brandy",
+        abbr: "Bran",
+        color: "red",
+        startDegree: 60,
+        stopDegree: 119.999
+    },
+    alcohol3: {
+        name: "Gin",
+        abbr: "Gin",
+        color: "green",
+        startDegree: 120,
+        stopDegree: 179.999
+    },
+    alcohol4: {
+        name: "Whisky",
+        abbr: "Whis",
+        color: "brown",
+        startDegree: 180,
+        stopDegree: 239.999
+    },
+    alcohol5: {
+        name: "Tequila",
+        abbr: "Teq",
+        color: "orange",
+        startDegree: 240,
+        stopDegree: 299.999
+    },
+    alcohol6: {
+        name: "Rum",
+        abbr: "Rum",
+        color: "blue",
+        startDegree: 300,
+        stopDegree: 359.999
+    }
+}
+
 
 function inputUpdate(angle){
 document.getElementById("test").innerText = angle
@@ -108,15 +163,16 @@ function mouseToSpinWheel(e){
 
         infiniteDegrees = numberRotationsCounter * 360 + absOffsetDegree
 
+        inputUpdate(infiniteDegrees)
+        document.getElementById("drinkname").innerText = wheelSelectorByDegree(infiniteDegrees)[0]["name"]
+        document.getElementById("drinkname").style.color = wheelSelectorByDegree(infiniteDegrees)[0]["color"]
+
     }
 
 
 
 
 
-
-
-    inputUpdate(infiniteDegrees)
 
 
 
@@ -131,6 +187,24 @@ function mouseToSpinWheel(e){
 
 
 }
+
+function wheelSelectorByDegree(degrees) {
+    let selectDegrees
+    if (degrees<=0){
+        //for negative numbers
+        selectDegrees = 360+(degrees%360)
+    } else {
+        selectDegrees = degrees % 360
+    }
+    const arr = Object.keys(alcoholList).map(function (key) {
+        if (alcoholList[key].startDegree < selectDegrees && selectDegrees < alcoholList[key].stopDegree) {
+            return alcoholList[key]
+        }
+    })
+    return arr.filter(function(item){ return item != null})
+}
+
+
 
 </script>
 </body>
