@@ -3,9 +3,20 @@
  */
 import React from 'react'
 import './MenuSquare.css'
+import {Link} from 'react-router-dom'
 
 
+		function createIngredients(ingredientsArray){
+		//console.log(ingredientsArray)
+		
+			const ingredientsList = ingredientsArray.map(ingredientObject => {
+				//console.log(ingredientObject)
+				return ingredientObject.textPlain + ', '
 
+			})
+			return ingredientsList
+		
+		} 
 
 
 class MenuSquare extends React.Component{
@@ -15,10 +26,13 @@ class MenuSquare extends React.Component{
 
         return(
             <div className="MenuSquareContainer">
+				<Link to={`/drink/${squareItem.id}`}>
                 <div className="MenuImageDiv" >
-                    <img className="MenuImage" src={squareItem.imageUrl} alt="Space Needle"/>
-                    <div className="MenuText" style={{backgroundColor: squareItem.textBackgroundColor}}><h3>{squareItem.name}</h3></div>
+					<div className="TopInfo" >RATING: {squareItem.rating}<br />{squareItem.name}</div>
+                    <img className="MenuImage" src={`http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/415x655/${squareItem.id}(85).jpg`} alt="{squareItem.name}"/>
+                    <div className="MenuText" style={{backgroundColor: squareItem.textBackgroundColor}}><h3>{createIngredients(squareItem.ingredients)}</h3></div>
                 </div>
+				</Link>
             </div>
         )
     }
