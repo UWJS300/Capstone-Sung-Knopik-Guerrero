@@ -44,17 +44,90 @@
 
 
 
-
-
-
+        h1 span {
+            font: 26px Monaco, MonoSpace;
+            height: 4.5em;
+            left: 4em;
+            top: .5em;
+            position: absolute;
+            color: antiquewhite;
+            user-select: none;
+            transform-origin: bottom center;
+        }
+        .char1 { transform: rotate(12deg); }
+        .char2 { transform: rotate(24deg); }
+        .char3 { transform: rotate(36deg); }
+        .char4 { transform: rotate(48deg); }
+        .char5 { transform: rotate(60deg); }
+        .char6 { transform: rotate(72deg); }
+        .char7 { transform: rotate(84deg); }
+        .char8 { transform: rotate(96deg); }
+        .char9 { transform: rotate(108deg); }
+        .char10 { transform: rotate(120deg); }
+        .char11 { transform: rotate(132deg); }
+        .char12 { transform: rotate(144deg); }
+        .char13 { transform: rotate(156deg); }
+        .char14 { transform: rotate(168deg); }
+        .char15 { transform: rotate(180deg); }
+        .char16 { transform: rotate(192deg); }
+        .char17 { transform: rotate(204deg); }
+        .char18 { transform: rotate(216deg); }
+        .char19 { transform: rotate(228deg); }
+        .char20 { transform: rotate(240deg); }
+        .char21 { transform: rotate(252deg); }
+        .char22 { transform: rotate(264deg); }
+        .char23 { transform: rotate(276deg); }
+        .char24 { transform: rotate(288deg); }
+        .char25 { transform: rotate(300deg); }
+        .char26 { transform: rotate(312deg); }
+        .char27 { transform: rotate(324deg); }
+        .char28 { transform: rotate(336deg); }
+        .char29 { transform: rotate(348deg); }
+        .char30 { transform: rotate(360deg); }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 </head>
 <body>
 
 <div id="wheel" class="wheel" onmousemove="mouseToSpinWheel(event)" onmousedown="down=1" onmouseup="down=0">
-
+    <div id="wheeltext">
+        <h1>
+            <!-- /.char --><span class="char1"></span>
+            <!-- /.char --><span class="char2"></span>
+            <!-- /.char --><span class="char3"></span>
+            <!-- /.char --><span class="char4"></span>
+            <!-- /.char --><span class="char5">Teq</span>
+            <!-- /.char --><span class="char6"></span>
+            <!-- /.char --><span class="char7"></span>
+            <!-- /.char --><span class="char8"></span>
+            <!-- /.char --><span class="char9"></span>
+            <!-- /.char --><span class="char10">Brdy</span>
+            <!-- /.char --><span class="char11"></span>
+            <!-- /.char --><span class="char12"></span>
+            <!-- /.char --><span class="char13"></span>
+            <!-- /.char --><span class="char14"></span>
+            <!-- /.char --><span class="char15">Gin</span>
+            <!-- /.char --><span class="char16"></span>
+            <!-- /.char --><span class="char17"></span>
+            <!-- /.char --><span class="char18"></span>
+            <!-- /.char --><span class="char19"></span>
+            <!-- /.char --><span class="char20">Wsky</span>
+            <!-- /.char --><span class="char21"></span>
+            <!-- /.char --><span class="char22"></span>
+            <!-- /.char --><span class="char23"></span>
+            <!-- /.char --><span class="char24"></span>
+            <!-- /.char --><span class="char25">Rum</span>
+            <!-- /.char --><span class="char26"></span>
+            <!-- /.char --><span class="char27"></span>
+            <!-- /.char --><span class="char28"></span>
+            <!-- /.char --><span class="char29"></span>
+            <!-- /.char --><span class="char30">Vod</span>
+        </h1>
+    </div>
 </div>
+
+
+
 
 
 <input class="text" id="angle" type="number" placeholder="0" value="0" onchange="inputUpdate(this.value)"/>
@@ -64,7 +137,7 @@
 <div class="text1" >Degrees: <span id="test1"></span></div>
 <div class="text1" >Starting Degree: <span id="test3"></span></div>
 <div class="text1" >Infinite Degree: <span id="test2"></span></div>
-<div class="text1">Drink Name: <span id="drinkname"></span></div>
+<div class="text1">Drink Name: <span id="drinkname">Vodka</span></div>
 <script>
 
 let x, y, startingDegree, absoluteDegree =0, absOffsetDegree, down
@@ -192,9 +265,10 @@ function wheelSelectorByDegree(degrees) {
     let selectDegrees
     if (degrees<=0){
         //for negative numbers
-        selectDegrees = 360+(degrees%360)
+        //30 degree offset to center each wheel slice
+        selectDegrees = 360+(degrees%360)+30
     } else {
-        selectDegrees = degrees % 360
+        selectDegrees = (degrees % 360) +30
     }
     const arr = Object.keys(alcoholList).map(function (key) {
         if (alcoholList[key].startDegree < selectDegrees && selectDegrees < alcoholList[key].stopDegree) {
