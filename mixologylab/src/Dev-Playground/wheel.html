@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Playball|Lobster" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         html{
             overflow:hidden;
@@ -17,69 +19,343 @@
             width: 16em; height: 16em;
             border-radius: 50%;
             background:
-                    linear-gradient(60deg, #272b66 63.5%, transparent 42.34%) 0 0,
+                    linear-gradient(60deg, #D8334A 63.5%, transparent 42.34%) 0 0,
                     /*linear-gradient(72deg, #2d559f 75.48%, transparent 75.48%) 0 0,*/
-                    linear-gradient(-60deg, #9ac147 63.5%, transparent 42.34%) 100% 0,
+                    linear-gradient(-60deg, #8067B7 63.5%, transparent 42.34%) 100% 0,
                     /*linear-gradient(-72deg, #639b47 75.48%, transparent 75.48%) 100% 0,*/
-                    linear-gradient(60deg, transparent 36.5%, #e1e23b 36.5%) 100% 100%,
+                    linear-gradient(60deg, transparent 36.5%, #FFCE54 36.5%) 100% 100%,
                     /*linear-gradient(72deg, transparent 24.52%, #f7941e 24.52%) 100% 100%,*/
-                    linear-gradient(-60deg, transparent 36.5%, #662a6c 36.5%) 0% 100%,
+                    linear-gradient(-60deg, transparent 36.5%, #A0D468 36.5%) 0% 100%,
                     /*linear-gradient(-72deg, transparent 24.52%, #9a1d34 24.52%) 0 100%,*/
-                    #43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%;
+                    #4FC1E9 linear-gradient(#fc7cb7, #FC7CB7) 50% 100%;
             background-repeat: no-repeat;
             background-size: 50% 50%;
-            transition: 1s linear;
+            transition: 0.05s linear;
         }
         .text{
             color:black;
             height: 20px;
         }
         .text1{
-            color:white
+            color:black
+        }
+
+        .drinknamecontainer{
+            margin-top: 100px;
+            margin-bottom: 50px;
+            display: block;
+            width:100%;
+            text-align:center;
+        }
+        #drinkname{
+            font-size: 2em;
+            color: #4FC1E9;
+            text-align: center;
+            margin: auto;
+            padding: 10px 30px 10px 30px;
+            border: 3px solid;
         }
 
 
+        h1 span {
+            font: 26px Monaco, MonoSpace;
+            height: 3.5em;
+            left: 3.35em;
+            top: .2em;
+            position: absolute;
+            color: rgba(7, 41, 66, 0.96);
+            user-select: none;
+            transform-origin: bottom center;
+        }
+        .char1 { transform: rotate(12deg); }
+        .char2 { transform: rotate(24deg); }
+        .char3 { transform: rotate(36deg); }
+        .char4 { transform: rotate(48deg); }
+        .char5 { transform: rotate(60deg);
+                    font-family: Lobster;
+                    font-size: 35px}
+        .char6 { transform: rotate(72deg); }
+        .char7 { transform: rotate(84deg); }
+        .char8 { transform: rotate(96deg); }
+        .char9 { transform: rotate(108deg); }
+        .char10 { transform: rotate(120deg);
+            font-family: Lobster;
+            font-size: 35px }
+        .char11 { transform: rotate(132deg); }
+        .char12 { transform: rotate(144deg); }
+        .char13 { transform: rotate(156deg); }
+        .char14 { transform: rotate(168deg); }
+        .char15 { transform: rotate(180deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char16 { transform: rotate(192deg); }
+        .char17 { transform: rotate(204deg); }
+        .char18 { transform: rotate(216deg); }
+        .char19 { transform: rotate(228deg); }
+        .char20 { transform: rotate(240deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char21 { transform: rotate(252deg); }
+        .char22 { transform: rotate(264deg); }
+        .char23 { transform: rotate(276deg); }
+        .char24 { transform: rotate(288deg); }
+        .char25 { transform: rotate(300deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char26 { transform: rotate(312deg); }
+        .char27 { transform: rotate(324deg); }
+        .char28 { transform: rotate(336deg); }
+        .char29 { transform: rotate(348deg); }
+        .char30 { transform: rotate(360deg);
+            font-family: Lobster;
+            font-size: 35px}
+
+        .carrot{
+            color: whitesmoke;
+            font-size: 2.5em;
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            display:inline-block;
+        }
+
+        .search{
+            text-align: center;
+
+            margin-top: 50px;
+            width: 100%;
+            display:inline-block;
+        }
+        #search{
+            width:3em; height: 3em;
+            padding: 20px 25px;
+            border-radius: 50%;
+            color: teal;
+            transition: all 1s;
+            animation-name: search;
+            animation-duration: 7s;
+            animation-iteration-count: infinite;
+            font-size:1.5em;
+            border: 3px solid teal;
+        }
+
+        @keyframes search{
+            0% {border-color: #009b9b;
+                color: #009b9b;}
+            10% {border-color: #009d11;
+                color: #009d11;}
+            20% {border-color: #479504;
+                color: #479504;}
+            30% {border-color: #958103;
+                color: #958103;}
+            50% {border-color: #956202;
+                color: #953d00;}
+            60% {border-color: #98003a;
+                color: #98003a;}
+            70% {border-color: #95008d;
+                color: #95008d;}
+            80% {border-color: #3f0080;
+                color: #3f0080;}
+            90% {border-color: #023c95;
+                color: #006295;}
+        }
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 </head>
 <body>
 
+
+<div class="drinknamecontainer"><span id="drinkname">Gin</span></div>
+
+<div class="carrot"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+
+<div class="wheelcontainer">
 <div id="wheel" class="wheel" onmousemove="mouseToSpinWheel(event)" onmousedown="down=1" onmouseup="down=0">
+    <div id="wheeltext">
+        <h1>
+            <!-- /.char --><span class="char1"></span>
+            <!-- /.char --><span class="char2"></span>
+            <!-- /.char --><span class="char3"></span>
+            <!-- /.char --><span class="char4"></span>
+            <!-- /.char --><span class="char5">V</span>
+            <!-- /.char --><span class="char6"></span>
+            <!-- /.char --><span class="char7"></span>
+            <!-- /.char --><span class="char8"></span>
+            <!-- /.char --><span class="char9"></span>
+            <!-- /.char --><span class="char10">T</span>
+            <!-- /.char --><span class="char11"></span>
+            <!-- /.char --><span class="char12"></span>
+            <!-- /.char --><span class="char13"></span>
+            <!-- /.char --><span class="char14"></span>
+            <!-- /.char --><span class="char15">B</span>
+            <!-- /.char --><span class="char16"></span>
+            <!-- /.char --><span class="char17"></span>
+            <!-- /.char --><span class="char18"></span>
+            <!-- /.char --><span class="char19"></span>
+            <!-- /.char --><span class="char20">W</span>
+            <!-- /.char --><span class="char21"></span>
+            <!-- /.char --><span class="char22"></span>
+            <!-- /.char --><span class="char23"></span>
+            <!-- /.char --><span class="char24"></span>
+            <!-- /.char --><span class="char25">R</span>
+            <!-- /.char --><span class="char26"></span>
+            <!-- /.char --><span class="char27"></span>
+            <!-- /.char --><span class="char28"></span>
+            <!-- /.char --><span class="char29"></span>
+            <!-- /.char --><span class="char30">G</span>
+        </h1>
+    </div>
+</div>
+
+</div>
+<div class="search">
+    <span id="search">
+        <i class="fa fa-search"></i>
+    </span>
 
 </div>
 
 
-<input class="text" id="angle" type="number" placeholder="0" value="0" onchange="inputUpdate(this.value)"/>
 <div class="text1" id="test">fdfdfdfds</div>
 <div class="text1" >x-coordinates: <span id="xco"></span></div>
 <div class="text1" >y-coordinates: <span id="yco"></span></div>
 <div class="text1" >Degrees: <span id="test1"></span></div>
-<div class="text1" >Degrees Mouse Down: <span id="test2"></span></div>
+<div class="text1" >Starting Degree: <span id="test3"></span></div>
+<div class="text1" >Infinite Degree: <span id="test2"></span></div>
 <script>
+
+let x, y, startingDegree, absoluteDegree =0, absOffsetDegree, down
+let previousAbsOffsetDegree
+let numberRotationsCounter = 0
+let infiniteDegrees =0
+
+
+
+const  alcoholList = {
+    alcohol1: {
+        name: "Gin",
+        color: "#4FC1E9",
+        startDegree: 0,
+        stopDegree: 59.999
+    },
+    alcohol2: {
+        name: "Rum",
+        color: "#D8334A",
+        startDegree: 60,
+        stopDegree: 119.999
+    },
+    alcohol3: {
+        name: "Whisky",
+        color: "#A0D468",
+        startDegree: 120,
+        stopDegree: 179.999
+    },
+    alcohol4: {
+        name: "Brandy",
+        color: "#fc7cb7",
+        startDegree: 180,
+        stopDegree: 239.999
+    },
+    alcohol5: {
+        name: "Tequila",
+        color: "#FFCE54",
+        startDegree: 240,
+        stopDegree: 299.999
+    },
+    alcohol6: {
+        name: "Vodka",
+        color: "#8067B7",
+        startDegree: 300,
+        stopDegree: 359.999
+    }
+}
+
+
 function inputUpdate(angle){
 document.getElementById("test").innerText = angle
 document.getElementById('wheel').style.transform = `rotate(${angle}deg)`
     }
 
-let x, y, absoluteDegree, down
-
-
 function mouseToSpinWheel(e){
     const wheel = document.getElementById("wheel")
-    // x = cursor position - div offset - half div size
+    // Goal: grab x and y coordinates
+    // Notes: Position (0, 0) is at the center of the wheel
+    // Math: x-coordinate = cursor position - div offset - half div size
     x = e.clientX - wheel.offsetLeft - (wheel.clientHeight)/2;
     y = e.clientY - wheel.offsetTop - (wheel.clientWidth)/2;
-    if (down === 1){
-        absoluteDegree = Math.atan((y/x))*(180/Math.PI)
+    // Goal: Grab Starting Degree so we offset it
+    if (down != 1){
+        startingDegree = Math.atan2(y,x)*(180/Math.PI)
+        startingDegree = (-infiniteDegrees+startingDegree+360)%360
+    }
+
+    // Goal: Convert coordinates to 360 degree spin.
+    // Goal: Grab coordinates only while mouse is down
+    // Notes: Uses arc tangent to grab math. Since degrees goes from
+    // -180 degrees to +180 degrees, we use mod function.
+    if (down === 1) {
+        absoluteDegree = Math.atan2(y, x) * (180 / Math.PI)
+        absoluteDegree = (absoluteDegree + 360) % 360
+        //Goal: When going from 345 degrees to 15 degrees, add one to the
+        //rotation counter.  When going from 15 to 345, subtract one.
+
+        absOffsetDegree = (absoluteDegree - startingDegree + 360) % 360
+
+
+        if (previousAbsOffsetDegree > 345 && absOffsetDegree < 15) {
+            numberRotationsCounter++
+        }
+        if (previousAbsOffsetDegree < 15 && absOffsetDegree > 345) {
+            numberRotationsCounter--
+        }
+        //Goal: Record previous degree state so we know whether to
+        //increment numberRotationCounter.
+        previousAbsOffsetDegree = absOffsetDegree
+
+        infiniteDegrees = numberRotationsCounter * 360 + absOffsetDegree
+
+        inputUpdate(infiniteDegrees)
+        document.getElementById("drinkname").innerText = wheelSelectorByDegree(infiniteDegrees)[0]["name"]
+        document.getElementById("drinkname").style.color = wheelSelectorByDegree(infiniteDegrees)[0]["color"]
 
     }
+
+
+
+
+
+
+
+
+
+
+    //Debugging Tools
     document.getElementById("yco").innerText = y
     document.getElementById("xco").innerText = x
-    document.getElementById("test1").innerText = absoluteDegree
-    document.getElementById("test2").innerText = "d"
+    document.getElementById("test1").innerText = absOffsetDegree
+    document.getElementById("test2").innerText = infiniteDegrees
+    document.getElementById("test3").innerText = startingDegree
+
+
 }
 
-
+function wheelSelectorByDegree(degrees) {
+    let selectDegrees
+    if (degrees<=0){
+        //for negative numbers
+        //30 degree offset to center each wheel slice
+        selectDegrees = 360+(degrees%360)+30
+    } else {
+        selectDegrees = (degrees % 360) +30
+    }
+    const arr = Object.keys(alcoholList).map(function (key) {
+        if (alcoholList[key].startDegree < selectDegrees && selectDegrees < alcoholList[key].stopDegree) {
+            return alcoholList[key]
+        }
+    })
+    return arr.filter(function(item){ return item != null})
+}
 
 
 
