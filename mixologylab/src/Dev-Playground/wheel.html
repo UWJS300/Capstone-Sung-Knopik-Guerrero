@@ -236,7 +236,7 @@ const  alcoholList = {
     alcohol1: {
         name: "Gin",
         color: "#4FC1E9",
-        startDegree: 0,
+        startDegree: 0.00001,
         stopDegree: 59.999
     },
     alcohol2: {
@@ -267,7 +267,7 @@ const  alcoholList = {
         name: "Vodka",
         color: "#8067B7",
         startDegree: 300,
-        stopDegree: 359.999
+        stopDegree: 360
     }
 }
 
@@ -342,12 +342,12 @@ function mouseToSpinWheel(e){
 
 function wheelSelectorByDegree(degrees) {
     let selectDegrees
-    if (degrees<=0){
+    if (degrees<=-30){
         //for negative numbers
         //30 degree offset to center each wheel slice
         selectDegrees = 360+(degrees%360)+30
     } else {
-        selectDegrees = (degrees % 360) +30
+        selectDegrees = (degrees % 360) + 30
     }
     const arr = Object.keys(alcoholList).map(function (key) {
         if (alcoholList[key].startDegree < selectDegrees && selectDegrees < alcoholList[key].stopDegree) {
