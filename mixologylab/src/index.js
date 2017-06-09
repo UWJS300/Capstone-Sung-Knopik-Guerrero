@@ -33,11 +33,19 @@ class Root extends React.Component{
         tasteFilter: [],
         drinksLists: [],
         baseAlcoholAPIReturn: {},
+		sortDrinkListBy: 'name',
       }
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
       this.updateTaste = this.updateTaste.bind(this)
+	  this.updateSortDrinkListBy = this.updateSortDrinkListBy.bind(this)
     }
 
+	updateSortDrinkListBy (sortDrinkListBy) {
+		this.setState({
+			sortDrinkListBy: sortDrinkListBy
+		})
+	}
+	
     //when one of the base alcohol is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the home.js through props
     updateBaseAlcohol (baseAlcoholName) {
@@ -124,6 +132,8 @@ class Root extends React.Component{
                               baseAlcohol={this.state.baseAlcohol}
                               tasteFilter={this.state.tasteFilter}
                               drinksLists={this.state.drinksLists}
+							  sortDrinkListBy={this.state.sortDrinkListBy}
+							  updateSortDrinkListBy={this.updateSortDrinkListBy}
                             />
                             )}/>
                         <Route path="/drink/:drink" render={props=> {

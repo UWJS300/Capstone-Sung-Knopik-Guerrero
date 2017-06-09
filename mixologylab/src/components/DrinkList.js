@@ -5,6 +5,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './DrinkList.css'
+import '../css/font-awesome-4.7.0/css/font-awesome.min.css'
 import PropTypes from 'prop-types'
 import seattleData from '../data/MenuDatabase'
 import MenuSquare from '../shared/MenuSquare'
@@ -15,6 +16,7 @@ class DrinkListPage extends React.Component{
     constructor(){
         super()
         this.redirectToDrinkDetail = this.redirectToDrinkDetail.bind(this)
+		this.sortListBy = this.sortListBy.bind(this)
     }
 
     static propTypes = {
@@ -27,6 +29,11 @@ class DrinkListPage extends React.Component{
         e.preventDefault()
         this.props.history.push(`/drink/${drinkName}`)
     }
+
+	sortListBy(e){
+			e.preventDefault()
+			this.props.updateSortDrinkListBy(e.target.value)
+	}	
 
     render(){
 
@@ -43,6 +50,7 @@ class DrinkListPage extends React.Component{
 			return result * sortOrder;
 			}
 		}
+
 
 		// Not currently tested or used - but included here for future expansion of features 6/3/17 Cliff Knopik
 		// Use like this: SomeObject.sort(dynamicSortMultiple("aproperty1", "-aproperty2"));
@@ -67,7 +75,7 @@ class DrinkListPage extends React.Component{
 			}
 		}
 
-    const { tasteFilter, baseAlcohol, drinksLists } = this.props
+    const { tasteFilter, baseAlcohol, drinksLists, sortDrinkListBy } = this.props
 
 		// temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
         // const searchAPIdrinkList = searchAPI()
@@ -95,13 +103,39 @@ class DrinkListPage extends React.Component{
 		//drinkListResults.sort(dynamicSort("name"))
 
 		// descending by name
-		drinkListResults.sort(dynamicSort("-name"))
+			const sortBy = sortDrinkListBy;
+		
+			drinkListResults.sort(dynamicSort(sortBy))
 
+/* NO LONGER NEEDED - replaced with MenuSquare layout			
+		function createIngredients(ingredientsArray){
+		//console.log(ingredientsArray)
+		
+			const ingredientsList = ingredientsArray.map(ingredientObject => {
+				//console.log(ingredientObject)
+				return ingredientObject.textPlain + ', '
+
+			})
+			return ingredientsList
+		
+		} 
 
 		const drinkList = drinkListResults.map(item => {
           return <tr key={item.id}>
-            <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{item.descriptionPlain}</td></tr>
+            <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{createIngredients(item.ingredients)}</td></tr>
         })
+		
+		// The below HTML had been in the render area
+				<table>
+				<thead>
+				<tr><th>NAME</th><th>RATING</th><th>DESCRIPTION</th></tr>
+				</thead>
+				<tbody id="test">
+                  {drinkList}
+				</tbody>
+				</table>
+		
+*/
 
 		/* temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
 		 return(
@@ -113,34 +147,45 @@ class DrinkListPage extends React.Component{
 
             </div>
         )
+		
+		
+					<a href="#" id="sortStyleDefault"><i className="fa fa-sort-alpha-asc fa-4x" aria-hidden="true" ></i></a>
+			<a href="#"><i className="fa fa-sort-alpha-desc fa-4x" aria-hidden="true"></i></a>
+			<a href="#"><i className="fa fa-sort-numeric-asc fa-4x" aria-hidden="true"></i></a>
+			<a href="#"><i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true"></i></a>
 		*/
         return(
             <div>
-                <div className="menucontainer">
+					<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button> 
+					<button type="submit" name="-name" value="-name" onClick={this.sortListBy}>Sort Name Descending</button> 
+					<button type="submit" name="rating" value="rating" onClick={this.sortListBy}>Sort Rating Ascending</button> 
+					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 																		
+				<div className="menucontainer">
                 <div className="flexcontainer">
-                    {Object.keys(seattleData).map(key=>{
-                        const squareItem = seattleData[key]
-                        return(<MenuSquare squareItem={squareItem}></MenuSquare>)
-                    })
-                    }
+					{drinkListResults.map(item => {
+					const squareItem = item
+					return (<MenuSquare squareItem={squareItem}></MenuSquare>)
+					})
+					}
                 </div>
                 </div>
-                <p>Drink List Page</p>
+				
+				<p>Drink List Page</p>
                 <p>Selected Base Alcohol: {baseAlcohol}</p>
                 <p>Selected Taste: {tasteFilter.map(item => item + ',')}</p>
                 <p>Drinks returned: {drinksLists.length}</p>
-				<table>
-				<thead>
-				<tr><th>NAME</th><th>RATING</th><th>DESCRIPTION</th></tr>
-				</thead>
-				<tbody>
-                  {drinkList}
-				</tbody>
-				</table>
             </div>
         )
     }
 
 }
 
+/*   Sample from above return
+                    {Object.keys(seattleData).map(key=>{
+                        const squareItem = seattleData[key]
+                        return(<MenuSquare squareItem={squareItem}></MenuSquare>)
+                    })
+                    }
+					*/
+					
 export default DrinkListPage
