@@ -11,14 +11,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 id="title">Mixology Lab</h1>
+            {/* Developer links
             <div className="devNav">
                 <Link className="devLink" to="/">Home</Link>
                 <Link className="devLink" to="/customize">Filter</Link>
                 <Link className="devLink" to="/drink-menu">Drink-List</Link>
                 <Link className="devLink" to="/drink/:somename">Drink-Item</Link>
-            </div>
+            </div>*/}
         </div>
         <div>
             {this.props.children}
