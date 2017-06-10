@@ -26,7 +26,7 @@ class MenuSquare extends React.Component{
         const {squareItem} = this.props
 
         return(
-            <div className="MenuSquareContainer menuTransition">
+            <div className="MenuSquareContainer">
 				<Link to={`/drink/${squareItem.id}`}>
                 <div className="MenuImageDiv" >
 					<div className="TopInfo" >RATING: {squareItem.rating}<br />{squareItem.name}</div>
