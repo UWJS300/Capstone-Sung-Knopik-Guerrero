@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 
 //display assets
@@ -7,11 +7,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+      super()
+      this.resetAppToHomePage = this.resetAppToHomePage.bind(this)
+  }
+
+    resetAppToHomePage(e){
+        e.preventDefault()
+        this.props.resetApp()
+        this.props.history.push("/")
+    }
+
+    componentDidMount(){
+        document.getElementById("title").addEventListener("click", this.resetAppToHomePage)
+    }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <h1 id="title">Mixology Lab</h1>
+          <div id="title">Mixology Lab</div>
             {/* Developer links
             <div className="devNav">
                 <Link className="devLink" to="/">Home</Link>
@@ -28,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
