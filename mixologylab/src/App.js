@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Mixology Lab</h2>
+          <h1 id="title">Mixology Lab</h1>
             <div className="devNav">
                 <Link className="devLink" to="/">Home</Link>
                 <Link className="devLink" to="/customize">Filter</Link>
