@@ -20,16 +20,17 @@ import {Link} from 'react-router-dom'
 
 
 class MenuSquare extends React.Component{
+    
 
     render(){
         const {squareItem} = this.props
 
         return(
-            <div className="MenuSquareContainer">
+            <div className="MenuSquareContainer menuTransition">
 				<Link to={`/drink/${squareItem.id}`}>
                 <div className="MenuImageDiv" >
 					<div className="TopInfo" >RATING: {squareItem.rating}<br />{squareItem.name}</div>
-                    <img className="MenuImage" src={`http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/415x655/${squareItem.id}(85).jpg`} alt="{squareItem.name}"/>
+                    <img id={squareItem.id} className="MenuImage" src={`http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/415x655/${squareItem.id}(85).jpg`} alt="{squareItem.name}"/>
                     <div className="MenuText" style={{borderColor: squareItem.color.toLowerCase()}}><h3>{createIngredients(squareItem.ingredients)}</h3></div>
                 </div>
 				</Link>
