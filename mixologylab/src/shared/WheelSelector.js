@@ -83,7 +83,7 @@ class WheelSelector extends React.Component{
     
     //This function changes the rotation of the div#wheel element.
     inputUpdate(angle){
-        document.getElementById("test").innerText = angle
+        // Debugging Tool: document.getElementById("test").innerText = angle
         document.getElementById('wheel').style.transform = `rotate(${angle}deg)`
     }
 
@@ -133,11 +133,11 @@ class WheelSelector extends React.Component{
 
         }
         //Dev Debugging Tools
-        document.getElementById("yco").innerText = y
-        document.getElementById("xco").innerText = x
-        document.getElementById("test1").innerText = absOffsetDegree
-        document.getElementById("test2").innerText = infiniteDegrees
-        document.getElementById("test3").innerText = startingDegree
+        //document.getElementById("yco").innerText = y
+        //document.getElementById("xco").innerText = x
+        //document.getElementById("test1").innerText = absOffsetDegree
+        //document.getElementById("test2").innerText = infiniteDegrees
+        //document.getElementById("test3").innerText = startingDegree
 
 
     }
@@ -244,13 +244,15 @@ class WheelSelector extends React.Component{
                         </span>
                </div>
                
-               <div className="text1" id="test">fdfdfdfds</div>
+               {/*Dev Debugging Tools
+
+                <div className="text1" id="test">fdfdfdfds</div>
                <div className="text1" >x-coordinates: <span id="xco"> </span></div>
                <div className="text1" >y-coordinates: <span id="yco"> </span></div>
                <div className="text1" >Degrees: <span id="test1"> </span></div>
                <div className="text1" >Starting Degree: <span id="test3"> </span></div>
                <div className="text1" >Infinite Degree: <span id="test2"> </span></div>
-               <div className="text1" >Infinite Degree: <span id="test2"> </span></div>
+               <div className="text1" >Infinite Degree: <span id="test2"> </span></div>*/}
        </div>
        )
    }
