@@ -32,8 +32,19 @@ class DrinkListPage extends React.Component{
 
 	sortListBy(e){
 			e.preventDefault()
-			this.props.updateSortDrinkListBy(e.target.value)
+			console.log(e.target.getAttribute("value"))
+			this.props.updateSortDrinkListBy(e.target.getAttribute("value"))
 	}	
+	
+	    //Attaches event handlers to DOM
+    componentDidMount(){
+        document.getElementById("NameAsc").addEventListener("click", this.sortListBy)
+		document.getElementById("NameDesc").addEventListener("click", this.sortListBy)
+		document.getElementById("RatingAsc").addEventListener("click", this.sortListBy)
+		document.getElementById("RatingDesc").addEventListener("click", this.sortListBy)
+
+
+    }
 
     render(){
 
@@ -154,12 +165,30 @@ class DrinkListPage extends React.Component{
 			<a href="#"><i className="fa fa-sort-numeric-asc fa-4x" aria-hidden="true"></i></a>
 			<a href="#"><i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true"></i></a>
 		*/
-        return(
-            <div>
-					<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button> 
+		
+		/* Traditional Buttons replaced by icons
+							<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button> 
 					<button type="submit" name="-name" value="-name" onClick={this.sortListBy}>Sort Name Descending</button> 
 					<button type="submit" name="rating" value="rating" onClick={this.sortListBy}>Sort Rating Ascending</button> 
-					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 																		
+					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 	
+					
+<br />
+*/
+        return(
+            <div>
+
+<span id="NameAsc" value="name" >
+<i className="fa fa-sort-alpha-asc fa-4x" aria-hidden="true" value="name" style={{margin: '5px 30px 0px 0px'}} ></i>
+</span>
+<span id="NameDesc" value="-name">
+<i className="fa fa-sort-alpha-desc fa-4x" aria-hidden="true" value="-name" style={{margin: '5px 30px 0px 0px'}}></i>
+</span>
+<span id="RatingAsc" value="rating">
+<i className="fa fa-sort-numeric-asc fa-4x" aria-hidden="true" value="rating" style={{margin: '5px 30px 0px 0px'}}></i>
+</span>
+<span id="RatingDesc" value="-rating">
+<i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true" value="-rating" style={{margin: '5px 0px 0px 0px'}} ></i>
+</span>					
 				<div className="menucontainer">
                 <div className="flexcontainer">
 					{drinkListResults.map(item => {
