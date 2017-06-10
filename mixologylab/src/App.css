@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  cursor: default;
 }
 
 .App-logo {
@@ -43,8 +44,10 @@
   text-decoration: none;
 }
 
-#title{
+#title, #title:visited, #title:active{
   font-family: Righteous, cursive;
   letter-spacing: 0.08em;
   font-size: 2.2em;
+  text-decoration:none;
+  color: white;
 }

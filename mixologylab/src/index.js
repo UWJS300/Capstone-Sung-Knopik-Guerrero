@@ -38,6 +38,7 @@ class Root extends React.Component{
       this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
       this.updateTaste = this.updateTaste.bind(this)
 	  this.updateSortDrinkListBy = this.updateSortDrinkListBy.bind(this)
+      this.resetApp = this.resetApp.bind(this)
     }
 
 	updateSortDrinkListBy (sortDrinkListBy) {
@@ -107,11 +108,21 @@ class Root extends React.Component{
         tasteFilter: newTasteState
       })
     }
-
+    resetApp(){
+        this.setState({
+            drinksLists: [],
+            tasteFilter: [],
+            baseAlcoholAPIReturn: {},
+            baseAlcohol: "LOADING..."
+            
+        })
+    }
+    
+    
     render(){
         return(
             <Router>
-                <App>
+                <App resetApp={this.resetApp}>
                     <Switch>
                         <Route exact path="/" render={props => (
                             <Home
