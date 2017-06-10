@@ -20,13 +20,9 @@
             border-radius: 50%;
             background:
                     linear-gradient(60deg, #D8334A 63.5%, transparent 42.34%) 0 0,
-                    /*linear-gradient(72deg, #2d559f 75.48%, transparent 75.48%) 0 0,*/
                     linear-gradient(-60deg, #8067B7 63.5%, transparent 42.34%) 100% 0,
-                    /*linear-gradient(-72deg, #639b47 75.48%, transparent 75.48%) 100% 0,*/
                     linear-gradient(60deg, transparent 36.5%, #FFCE54 36.5%) 100% 100%,
-                    /*linear-gradient(72deg, transparent 24.52%, #f7941e 24.52%) 100% 100%,*/
                     linear-gradient(-60deg, transparent 36.5%, #A0D468 36.5%) 0% 100%,
-                    /*linear-gradient(-72deg, transparent 24.52%, #9a1d34 24.52%) 0 100%,*/
                     #4FC1E9 linear-gradient(#fc7cb7, #FC7CB7) 50% 100%;
             background-repeat: no-repeat;
             background-size: 50% 50%;
@@ -236,7 +232,7 @@ const  alcoholList = {
     alcohol1: {
         name: "Gin",
         color: "#4FC1E9",
-        startDegree: 0,
+        startDegree: 0.00001,
         stopDegree: 59.999
     },
     alcohol2: {
@@ -267,7 +263,7 @@ const  alcoholList = {
         name: "Vodka",
         color: "#8067B7",
         startDegree: 300,
-        stopDegree: 359.999
+        stopDegree: 360
     }
 }
 
@@ -342,12 +338,12 @@ function mouseToSpinWheel(e){
 
 function wheelSelectorByDegree(degrees) {
     let selectDegrees
-    if (degrees<=0){
+    if (degrees<=-30){
         //for negative numbers
         //30 degree offset to center each wheel slice
         selectDegrees = 360+(degrees%360)+30
     } else {
-        selectDegrees = (degrees % 360) +30
+        selectDegrees = (degrees % 360) + 30
     }
     const arr = Object.keys(alcoholList).map(function (key) {
         if (alcoholList[key].startDegree < selectDegrees && selectDegrees < alcoholList[key].stopDegree) {
