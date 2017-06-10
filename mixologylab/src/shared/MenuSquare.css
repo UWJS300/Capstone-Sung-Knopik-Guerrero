@@ -2,7 +2,10 @@
     flex: 1 1 0;
     width:222px;
     height:222px;
+
 }
+
+
 
 .MenuSquareContainer a{
 	color: white;
@@ -11,7 +14,7 @@
 .MenuImageDiv{
     width:222px;
     height:222px;
-    background-color: lightseagreen;
+    background-color: black;
     position: relative;
 }
 
