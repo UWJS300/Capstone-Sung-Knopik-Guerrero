@@ -9,6 +9,7 @@ import React from 'react'
 import './Home.css'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import WheelSelector from '../shared/WheelSelector'
 
 class HomePage extends React.Component{
 
@@ -16,52 +17,16 @@ class HomePage extends React.Component{
       updateBaseAlcohol : PropTypes.func,
     };
 
-    constructor () {
-      super()
-      this.routeWithNewBaseAlcohol = this.routeWithNewBaseAlcohol.bind(this)
-    }
-
-    routeWithNewBaseAlcohol (e) {
-      e.preventDefault()
-      this.props.updateBaseAlcohol(e.target.children[0].value)
-      this.props.history.push(`/customize`)
-    }
 
     render(){
-
-		// Get the overall object from the JSON file - Cliff Knopik 6/1/17
-		const basespiritsObject = require('../data/basespirits.json');
-
-		// log to show there is an array of objects - Cliff Knopik 6/1/17
-		//console.log("BaseSpirits:");
-		//console.log(basespiritsObject.result);
-
-		// Assign the results - the array of tastes objects - Cliff Knopik 6/1/17
-		const baseAlcoholStrings = basespiritsObject.result;
-		/*
-        const baseAlcoholStrings = [
-          'Brandy',
-          'Gin',
-          'Rum',
-          'Tequila',
-          'Vodka',
-          'Whisky',
-        ]
-		*/
-
-        const baseAlcoholList = baseAlcoholStrings.map(item => {
-            return <form key={item.name} method='POST' action='/customize' onSubmit={this.routeWithNewBaseAlcohol}>
-                <input type='hidden' value={item.type} />
-                <button type='submit'>{item.name}</button>
-              </form>
-
-        })
+        
 
         return(
             <div>
-                <ul>
-                  {baseAlcoholList}
-                </ul>
+                
+                <div class="wheelcontainer">
+                    <WheelSelector updateBaseAlcohol={this.props.updateBaseAlcohol}> </WheelSelector>
+                </div>
             </div>
         )
     }

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wheelcontainer{
+            display: inline-block;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow:hidden;
+        }
+
+        .wheel{
+            position: relative;
+            margin: 1em auto;
+            width: 16em; height: 16em;
+            border-radius: 50%;
+            background:
+                    linear-gradient(60deg, #D8334A 63.5%, transparent 42.34%) 0 0,
+            linear-gradient(-60deg, #8067B7 63.5%, transparent 42.34%) 100% 0,
+            linear-gradient(60deg, transparent 36.5%, #FFCE54 36.5%) 100% 100%,
+            linear-gradient(-60deg, transparent 36.5%, #A0D468 36.5%) 0% 100%,
+            #4FC1E9 linear-gradient(#fc7cb7, #FC7CB7) 50% 100%;
+            background-repeat: no-repeat;
+            background-size: 50% 50%;
+            transition: 0.05s linear;
+        }
+        .text{
+            color:black;
+            height: 20px;
+        }
+
+
+        .text1{
+            color:black
+        }
+
+        .drinknamecontainer{
+            margin-top: 100px;
+            margin-bottom: 50px;
+            display: block;
+            width:100%;
+            text-align:center;
+        }
+        #drinkname{
+            font-size: 2em;
+            color: #4FC1E9;
+            text-align: center;
+            margin: auto;
+            padding: 10px 30px 10px 30px;
+            border: 3px solid;
+        }
+
+
+        h1 span {
+            font: 26px Monaco, MonoSpace;
+            height: 3.5em;
+            left: 3.35em;
+            top: .2em;
+            position: absolute;
+            color: rgba(7, 41, 66, 0.96);
+            user-select: none;
+            transform-origin: bottom center;
+        }
+        .char1 { transform: rotate(12deg); }
+        .char2 { transform: rotate(24deg); }
+        .char3 { transform: rotate(36deg); }
+        .char4 { transform: rotate(48deg); }
+        .char5 { transform: rotate(60deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char6 { transform: rotate(72deg); }
+        .char7 { transform: rotate(84deg); }
+        .char8 { transform: rotate(96deg); }
+        .char9 { transform: rotate(108deg); }
+        .char10 { transform: rotate(120deg);
+            font-family: Lobster;
+            font-size: 35px }
+        .char11 { transform: rotate(132deg); }
+        .char12 { transform: rotate(144deg); }
+        .char13 { transform: rotate(156deg); }
+        .char14 { transform: rotate(168deg); }
+        .char15 { transform: rotate(180deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char16 { transform: rotate(192deg); }
+        .char17 { transform: rotate(204deg); }
+        .char18 { transform: rotate(216deg); }
+        .char19 { transform: rotate(228deg); }
+        .char20 { transform: rotate(240deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char21 { transform: rotate(252deg); }
+        .char22 { transform: rotate(264deg); }
+        .char23 { transform: rotate(276deg); }
+        .char24 { transform: rotate(288deg); }
+        .char25 { transform: rotate(300deg);
+            font-family: Lobster;
+            font-size: 35px}
+        .char26 { transform: rotate(312deg); }
+        .char27 { transform: rotate(324deg); }
+        .char28 { transform: rotate(336deg); }
+        .char29 { transform: rotate(348deg); }
+        .char30 { transform: rotate(360deg);
+            font-family: Lobster;
+            font-size: 35px}
+
+        .carrot{
+            color: whitesmoke;
+            font-size: 2.5em;
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            display:inline-block;
+        }
+
+        .search{
+            text-align: center;
+
+            margin-top: 50px;
+            width: 100%;
+            display:inline-block;
+        }
+        #search{
+            width:3em; height: 3em;
+            padding: 20px 25px;
+            border-radius: 50%;
+            color: teal;
+            transition: all 1s;
+            animation-name: search;
+            animation-duration: 7s;
+            animation-iteration-count: infinite;
+            font-size:1.5em;
+            border: 3px solid teal;
+        }
+
+        @keyframes search{
+            0% {border-color: #009b9b;
+            color: #009b9b;}
+            10% {border-color: #009d11;
+            color: #009d11;}
+            20% {border-color: #479504;
+            color: #479504;}
+            30% {border-color: #958103;
+            color: #958103;}
+            50% {border-color: #956202;
+            color: #953d00;}
+            60% {border-color: #98003a;
+            color: #98003a;}
+            70% {border-color: #95008d;
+            color: #95008d;}
+            80% {border-color: #3f0080;
+            color: #3f0080;}
+            90% {border-color: #023c95;
+            color: #006295;}
+        }
+    </style>
+</head>
+<body>
+<div class="wheelcontainer">
+    <div id="wheel" class="wheel">
+        <p>hello</p>
+    </div>
+</div>
+</body>
+</html>
