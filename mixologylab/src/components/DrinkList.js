@@ -178,22 +178,22 @@ class DrinkListPage extends React.Component{
             <div>
 
 <span id="NameAsc" value="name" >
-<i className="fa fa-sort-alpha-asc fa-4x" aria-hidden="true" value="name" style={{margin: '5px 30px 0px 0px'}} ></i>
+<i className="fa fa-sort-alpha-asc fa-2x sortIcons" aria-hidden="true" value="name" style={{margin: '5px 50px 0px 0px'}} ></i>
 </span>
 <span id="NameDesc" value="-name">
-<i className="fa fa-sort-alpha-desc fa-4x" aria-hidden="true" value="-name" style={{margin: '5px 30px 0px 0px'}}></i>
+<i className="fa fa-sort-alpha-desc fa-2x sortIcons" aria-hidden="true" value="-name" style={{margin: '5px 50px 0px 0px'}}></i>
 </span>
 <span id="RatingAsc" value="rating">
-<i className="fa fa-sort-numeric-asc fa-4x" aria-hidden="true" value="rating" style={{margin: '5px 30px 0px 0px'}}></i>
+<i className="fa fa-sort-numeric-asc fa-2x sortIcons" aria-hidden="true" value="rating" style={{margin: '5px 50px 0px 0px'}}></i>
 </span>
 <span id="RatingDesc" value="-rating">
-<i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true" value="-rating" style={{margin: '5px 0px 0px 0px'}} ></i>
+<i className="fa fa-sort-numeric-desc fa-2x sortIcons" aria-hidden="true" value="-rating" style={{margin: '5px 0px 0px 0px'}} ></i>
 </span>
 
-        <br/><br/>
+				{/* <br/><br/>
         <p>Selected Base Alcohol: {baseAlcohol.toUpperCase()}</p>
         <p>Selected Taste: {tasteFilter.map(item => item.charAt(0).toUpperCase() + item.slice(1) + ' | ')}</p>
-        <p>Drinks returned: {drinksLists.length}</p>
+        <p>Drinks returned: {drinksLists.length}</p>*/}
 
 				<div className="menucontainer">
                 <div className="flexcontainer">
