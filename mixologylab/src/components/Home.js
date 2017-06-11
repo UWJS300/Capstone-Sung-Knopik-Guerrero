@@ -19,12 +19,12 @@ class HomePage extends React.Component{
 
 
     render(){
-        
+
 
         return(
             <div>
-                
-                <div class="wheelcontainer">
+
+                <div className="wheelcontainer">
                     <WheelSelector updateBaseAlcohol={this.props.updateBaseAlcohol}> </WheelSelector>
                 </div>
             </div>
