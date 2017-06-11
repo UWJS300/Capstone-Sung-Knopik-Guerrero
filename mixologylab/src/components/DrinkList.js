@@ -189,6 +189,12 @@ class DrinkListPage extends React.Component{
 <span id="RatingDesc" value="-rating">
 <i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true" value="-rating" style={{margin: '5px 0px 0px 0px'}} ></i>
 </span>
+
+        <br/><br/>
+        <p>Selected Base Alcohol: {baseAlcohol.toUpperCase()}</p>
+        <p>Selected Taste: {tasteFilter.map(item => item.charAt(0).toUpperCase() + item.slice(1) + ' | ')}</p>
+        <p>Drinks returned: {drinksLists.length}</p>
+
 				<div className="menucontainer">
                 <div className="flexcontainer">
 					{drinkListResults.map(item => {
@@ -199,10 +205,6 @@ class DrinkListPage extends React.Component{
                 </div>
                 </div>
 
-				<p>Drink List Page</p>
-                <p>Selected Base Alcohol: {baseAlcohol}</p>
-                <p>Selected Taste: {tasteFilter.map(item => item + ',')}</p>
-                <p>Drinks returned: {drinksLists.length}</p>
             </div>
         )
     }
