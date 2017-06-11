@@ -18,7 +18,9 @@ import {Link} from 'react-router-dom'
 		
 		} 
 
-
+/* This code removed as there appears to be missing color data. Preserved for future improvement.
+ Went in the MenuText div: style={{borderColor: squareItem.color.toLowerCase()}}>
+*/
 class MenuSquare extends React.Component{
     
 
@@ -31,7 +33,7 @@ class MenuSquare extends React.Component{
                 <div className="MenuImageDiv" >
 					<div className="TopInfo" >RATING: {squareItem.rating}<br />{squareItem.name}</div>
                     <img id={squareItem.id} className="MenuImage" src={`http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/415x655/${squareItem.id}(85).jpg`} alt="{squareItem.name}"/>
-                    <div className="MenuText" style={{borderColor: squareItem.color.toLowerCase()}}><h3>{createIngredients(squareItem.ingredients)}</h3></div>
+                    <div className="MenuText" style={{borderColor: 'white'}}><h3>{createIngredients(squareItem.ingredients)}</h3></div>
                 </div>
 				</Link>
             </div>
