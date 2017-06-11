@@ -14,8 +14,8 @@ class App extends Component {
 
     resetAppToHomePage(e){
         e.preventDefault()
-        this.props.resetApp()
         this.props.history.push("/")
+        this.props.resetApp()
     }
 
     componentDidMount(){

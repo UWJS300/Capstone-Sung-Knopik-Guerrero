@@ -110,11 +110,11 @@ class Root extends React.Component{
     }
     resetApp(){
         this.setState({
-            drinksLists: [],
+            baseAlcohol: 'LOADING...',
             tasteFilter: [],
+            drinksLists: [],
             baseAlcoholAPIReturn: {},
-            baseAlcohol: "LOADING..."
-            
+            sortDrinkListBy: 'name',
         })
     }
     
