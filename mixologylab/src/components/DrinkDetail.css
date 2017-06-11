@@ -40,13 +40,13 @@
 
 .drinkDetailIngredients{
     width:300px;
-    top: 50px;
+    top: 40px;
     position: absolute;
     text-align: left;
     left: 300px;
     margin:0;
-    font-size: 1.5em;
-    line-height: 2em;
+    font-size: 1.15em;
+    line-height: 1.8em;
     padding: 10px 50px 10px 30px;
     animation: drinkIngredients;
     animation-duration: 2s;
@@ -71,7 +71,7 @@ li {
 .drinkDetailDescription{
     display: inline-block;
     position: absolute;
-    top: 500px;
+    top: 550px;
     left: 50px;
     width: 500px;
     margin: auto;
