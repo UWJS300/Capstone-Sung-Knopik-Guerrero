@@ -69,7 +69,6 @@ class FilterPage extends React.Component{
                 <br/>
                 <Link to={'/drink-menu'} className={'result'}>Display {drinksLists.length !== 0 ? drinksLists.length : 0}</Link>
                 <br/><br/><br/>
-                <Link to={'/'} className={'result'}>Select Base Alcohol</Link>
             </div>
         )
 
