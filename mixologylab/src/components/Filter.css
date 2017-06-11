@@ -227,3 +227,23 @@ body {
   color: #000;
   background-color: #3399cc;
 }
+
+.search{
+    text-align: center;
+
+    margin-top: 50px;
+    width: 100%;
+    display:inline-block;
+}
+#search{
+    width:3em; height: 3em;
+    padding: 20px 25px;
+    border-radius: 50%;
+    color: teal;
+    transition: all 1s;
+    animation-name: search;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    font-size:1.5em;
+    border: 3px solid teal;
+}

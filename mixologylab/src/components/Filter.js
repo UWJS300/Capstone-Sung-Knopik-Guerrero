@@ -66,10 +66,13 @@ class FilterPage extends React.Component{
                 <ul>
                   {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
-                <br/>
-                <Link to={'/drink-menu'} className={'result'}>Display {drinksLists.length !== 0 ? drinksLists.length : 0}</Link>
+                <Link to={'/drink-menu'}>
+                <div className="search">
+                         <span id="search">
+                             Display {drinksLists.length !== 0 ? drinksLists.length : 0}
+                         </span>
+                </div></Link>
                 <br/><br/><br/>
-                <Link to={'/'} className={'result'}>Select Base Alcohol</Link>
             </div>
         )
 

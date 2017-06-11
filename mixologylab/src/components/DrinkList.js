@@ -34,8 +34,8 @@ class DrinkListPage extends React.Component{
 			e.preventDefault()
 			console.log(e.target.getAttribute("value"))
 			this.props.updateSortDrinkListBy(e.target.getAttribute("value"))
-	}	
-	
+	}
+
 	    //Attaches event handlers to DOM
     componentDidMount(){
         document.getElementById("NameAsc").addEventListener("click", this.sortListBy)
@@ -115,27 +115,27 @@ class DrinkListPage extends React.Component{
 
 		// descending by name
 			const sortBy = sortDrinkListBy;
-		
+
 			drinkListResults.sort(dynamicSort(sortBy))
 
-/* NO LONGER NEEDED - replaced with MenuSquare layout			
+/* NO LONGER NEEDED - replaced with MenuSquare layout
 		function createIngredients(ingredientsArray){
 		//console.log(ingredientsArray)
-		
+
 			const ingredientsList = ingredientsArray.map(ingredientObject => {
 				//console.log(ingredientObject)
 				return ingredientObject.textPlain + ', '
 
 			})
 			return ingredientsList
-		
-		} 
+
+		}
 
 		const drinkList = drinkListResults.map(item => {
           return <tr key={item.id}>
             <td ><Link to={`/drink/${item.id}`}>{item.name}</Link> </td><td >{item.rating} </td><td >{createIngredients(item.ingredients)}</td></tr>
         })
-		
+
 		// The below HTML had been in the render area
 				<table>
 				<thead>
@@ -145,7 +145,7 @@ class DrinkListPage extends React.Component{
                   {drinkList}
 				</tbody>
 				</table>
-		
+
 */
 
 		/* temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
@@ -158,20 +158,20 @@ class DrinkListPage extends React.Component{
 
             </div>
         )
-		
-		
+
+
 					<a href="#" id="sortStyleDefault"><i className="fa fa-sort-alpha-asc fa-4x" aria-hidden="true" ></i></a>
 			<a href="#"><i className="fa fa-sort-alpha-desc fa-4x" aria-hidden="true"></i></a>
 			<a href="#"><i className="fa fa-sort-numeric-asc fa-4x" aria-hidden="true"></i></a>
 			<a href="#"><i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true"></i></a>
 		*/
-		
+
 		/* Traditional Buttons replaced by icons
-							<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button> 
-					<button type="submit" name="-name" value="-name" onClick={this.sortListBy}>Sort Name Descending</button> 
-					<button type="submit" name="rating" value="rating" onClick={this.sortListBy}>Sort Rating Ascending</button> 
-					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button> 	
-					
+							<button type="submit" name="name" value="name" onClick={this.sortListBy}>Sort Name Ascending</button>
+					<button type="submit" name="-name" value="-name" onClick={this.sortListBy}>Sort Name Descending</button>
+					<button type="submit" name="rating" value="rating" onClick={this.sortListBy}>Sort Rating Ascending</button>
+					<button type="submit" name="-rating" value="-rating" onClick={this.sortListBy}>Sort Rating Descending</button>
+
 <br />
 */
         return(
@@ -188,21 +188,23 @@ class DrinkListPage extends React.Component{
 </span>
 <span id="RatingDesc" value="-rating">
 <i className="fa fa-sort-numeric-desc fa-4x" aria-hidden="true" value="-rating" style={{margin: '5px 0px 0px 0px'}} ></i>
-</span>					
+</span>
+
+        <br/><br/>
+        <p>Selected Base Alcohol: {baseAlcohol.toUpperCase()}</p>
+        <p>Selected Taste: {tasteFilter.map(item => item.charAt(0).toUpperCase() + item.slice(1) + ' | ')}</p>
+        <p>Drinks returned: {drinksLists.length}</p>
+
 				<div className="menucontainer">
                 <div className="flexcontainer">
 					{drinkListResults.map(item => {
 					const squareItem = item
-					return (<MenuSquare squareItem={squareItem}></MenuSquare>)
+					return (<MenuSquare key={squareItem.id} squareItem={squareItem}></MenuSquare>)
 					})
 					}
                 </div>
                 </div>
-				
-				<p>Drink List Page</p>
-                <p>Selected Base Alcohol: {baseAlcohol}</p>
-                <p>Selected Taste: {tasteFilter.map(item => item + ',')}</p>
-                <p>Drinks returned: {drinksLists.length}</p>
+
             </div>
         )
     }
@@ -216,5 +218,5 @@ class DrinkListPage extends React.Component{
                     })
                     }
 					*/
-					
+
 export default DrinkListPage
