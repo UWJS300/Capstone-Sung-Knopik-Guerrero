@@ -15,6 +15,15 @@
     justify-content: center;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    animation: squareTransition;
+    animation-duration: 2.5s;
+    opacity: 1;
+}
+
+@keyframes squareTransition {
+    0% {opacity: 0;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 .MenuBlock{
