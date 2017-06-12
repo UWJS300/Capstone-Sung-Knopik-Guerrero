@@ -24,6 +24,7 @@ import DrinkList from './components/DrinkList'
 //import css
 import './index.css';
 
+
 class Root extends React.Component{
     //insert State
     constructor () {
@@ -52,14 +53,22 @@ class Root extends React.Component{
     updateBaseAlcohol (baseAlcoholName) {
       //jquery api call with jsonp
       //grabs the data then sets returned data as state
-      $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=6b80f06201e8408f9502964f3c2fdd4c', ( result ) => {
+      /*$.get( 'http://addb.absolutdrinks.com/?appId=13313&/drinks/withtype/' + baseAlcoholName + '?pageSize=10000', ( result ) => {
         this.setState({
           baseAlcoholAPIReturn : result,
           baseAlcohol : baseAlcoholName,
         })
-      }, 'jsonp');
-    }
+      }, 'JSONP');*/
+	/*ignore jslint start*/
+     window.addb.drinks().withIngredient(baseAlcoholName).loadSet((result)=>{
+	this.setState({
 
+	baseAlcoholAPIReturn: result,
+	baseAlcohol: baseAlcoholName
+	})
+      })
+    }
+	/*ignore jslint end*/
     //when one of the taste is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the filter.js through props
     updateTaste (tasteName) {
@@ -108,7 +117,8 @@ class Root extends React.Component{
         tasteFilter: newTasteState
       })
     }
-    resetApp(){
+
+	resetApp(){
         this.setState({
             baseAlcohol: 'LOADING...',
             tasteFilter: [],
