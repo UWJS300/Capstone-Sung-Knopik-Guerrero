@@ -70,6 +70,9 @@ class DrinkDetailPage extends React.Component{
             "name": "Angelica",
             "descriptionPlain": "Fill a shaker with ice cubes. Add all ingredients. Shake and strain into a chilled cocktail glass. Garnish with lemon and a maraschino berry."
         }
+
+
+
         return(
             <div>
                 <div className="drinkTitle">{drink.name}</div>
@@ -82,7 +85,16 @@ class DrinkDetailPage extends React.Component{
                             })}
                         </ul>
                     </div>
-                    <div className="drinkDetailDescription">{drink.descriptionPlain}</div>
+                    <div className="drinkDetailVideoContainer">
+                        <div className="videoTitle">How To Make</div>
+                        <div className="drinkDetailDescription">{drink.descriptionPlain}
+                        </div>
+                        {drink.videos[0].type == "youtube" ?
+                             (<div>
+                                 <iframe className="drinkDetailVideo" src={`http://www.youtube.com/embed/${drink.videos[0].video}?showinfo=0`} width="400" height="300" frameborder="0" allowfullscreen></iframe></div>) : (<p></p>)
+                        }
+
+                    </div>
                 </div>
 
             </div>
