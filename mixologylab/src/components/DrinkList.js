@@ -10,7 +10,6 @@ import PropTypes from 'prop-types'
 import seattleData from '../data/MenuDatabase'
 import MenuSquare from '../shared/MenuSquare'
 
-
 class DrinkListPage extends React.Component{
 
     constructor(){
@@ -23,6 +22,7 @@ class DrinkListPage extends React.Component{
       baseAlcohol: PropTypes.string,
       tasteFilter: PropTypes.array,
       drinksLists: PropTypes.array,
+      baseAlcoholAPIReturn: PropTypes.object,
     };
 
     redirectToDrinkDetail(e, drinkName){
@@ -86,7 +86,7 @@ class DrinkListPage extends React.Component{
 			}
 		}
 
-    const { tasteFilter, baseAlcohol, drinksLists, sortDrinkListBy } = this.props
+    const { baseAlcoholAPIReturn, tasteFilter, baseAlcohol, drinksLists, sortDrinkListBy } = this.props
 
 		// temp comment out for testing - might be replaced or modified - Cliff Knopik 6/2/17
         // const searchAPIdrinkList = searchAPI()
@@ -196,14 +196,20 @@ class DrinkListPage extends React.Component{
         <p>Drinks returned: {drinksLists.length}</p>*/}
 
 				<div className="menucontainer">
-                <div className="flexcontainer">
-					{drinkListResults.map(item => {
-					const squareItem = item
-					return (<MenuSquare key={squareItem.id} squareItem={squareItem}></MenuSquare>)
+          <div className="flexcontainer">
+					{
+          drinksLists.length === 0 && baseAlcoholAPIReturn.result ? baseAlcoholAPIReturn.result.map(item => {
+  					const squareItem = item
+  					return (<MenuSquare key={squareItem.id} squareItem={squareItem}></MenuSquare>)
+          })
+          :
+          drinkListResults.map(item => {
+  					const squareItem = item
+  					return (<MenuSquare key={squareItem.id} squareItem={squareItem}></MenuSquare>)
 					})
 					}
-                </div>
-                </div>
+        </div>
+        </div>
 
             </div>
         )
