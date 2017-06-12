@@ -78,7 +78,7 @@ class DrinkDetailPage extends React.Component{
                     <div className="drinkDetailIngredients">
                         <ul>
                             {drink.ingredients.map(function(item){
-                                return(<li>{item.textPlain}</li>)
+                                return(<li id={item.id}>{item.textPlain}</li>)
                             })}
                         </ul>
                     </div>

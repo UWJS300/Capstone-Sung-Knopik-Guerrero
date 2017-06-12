@@ -61,18 +61,21 @@ class FilterPage extends React.Component{
 
         return(
             <div>
-                <h1>Taste</h1>
+                <h1 className="drinkFilterTitle">Select Tastes</h1>
                 <p>Selected Base Alcohol: {selectedBaseAlcohol.toUpperCase()}</p>
+                <div className="container" >
+                
                 <ul>
                   {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
                 </ul>
                 <Link to={'/drink-menu'}>
-                <div className="search">
-                         <span id="search">
-                             Display {drinksLists.length !== 0 ? drinksLists.length : 0}
-                         </span>
-                </div></Link>
-                <br/><br/><br/>
+                    <div className="displayDrinkButton">
+                             <span id="displayDrinkButton">
+                                 {drinksLists.length !== 0 ? drinksLists.length : 0} Drinks
+                             </span>
+                    </div>
+                </Link>
+                </div>
             </div>
         )
 
