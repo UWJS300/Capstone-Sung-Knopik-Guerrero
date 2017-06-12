@@ -31,8 +31,6 @@
 
 }
 
-
-
 .devLink{
   flex: 1 1 0;
   color: peachpuff;
@@ -50,4 +48,52 @@
   font-size: 2.2em;
   text-decoration:none;
   color: white;
+}
+
+.flask-button{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: lightskyblue;
+}
+
+.infobox{
+  width: 250px;
+  height: 300px;
+  text-align: center;
+  border-radius: 10px;
+  color: #0d3349;
+  background-color: papayawhip;
+  position: absolute;
+  bottom: 5px;
+  left: -1000px;
+  padding: 10px;
+  z-index:100;
+  opacity: 0;
+  transition:  left 1s, opacity 0.5s;
+}
+
+.infoboxList{
+  text-align: center;
+  color: #2b81af;
+  font-size: 0.8em;
+}
+
+.infoboxTitle{
+  color: black;
+  font-size: 1.1em;
+  text-decoration: underline;
+}
+
+.infoboxGit{
+  padding-top: 15px;
+  color: black;
+}
+.infoboxGit:link{
+  color: maroon;
+}
+
+.closebutton{
+  text-align: right;
+  width: 90%
 }
