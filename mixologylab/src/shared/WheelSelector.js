@@ -11,7 +11,7 @@ import '../css/font-awesome-4.7.0/css/font-awesome.min.css'
 let startingDegree, down =0
 let numberRotationsCounter = 0
 let infiniteDegrees =0
-let x, y, absoluteDegree =0, absOffsetDegree, previousAbsOffsetDegree
+let x =0, y=0, absoluteDegree =0, absOffsetDegree, previousAbsOffsetDegree
 const  alcoholList = {
     1: {
         name: "Gin",
@@ -67,6 +67,7 @@ class WheelSelector extends React.Component{
         this.setDownTrue = this.setDownTrue.bind(this)
         this.setDownFalse = this.setDownFalse.bind(this)
         this.routeWithNewBaseAlcohol = this.routeWithNewBaseAlcohol.bind(this)
+        this.touchToSpinWheel = this.touchToSpinWheel.bind(this)
     }
 
     //These two event functions track "mousedown" and "mouseup"
@@ -74,28 +75,84 @@ class WheelSelector extends React.Component{
         e.preventDefault()
         down = 1
         console.log(down)
+        console.log(e)
+        //for touch devices, starting degree needs to be captured on touchstart
+        if(e.type === "touchstart"){
+            startingDegree = Math.atan2(e.touches[0].clientY, e.touches[0].clientX) * (180 / Math.PI)
+            startingDegree = (-infiniteDegrees + startingDegree + 360) % 360
+        }
          }
     setDownFalse(e){
         e.preventDefault()
         down = 0
-        console.log(down)
+        console.log(down, e.type)
     }
     
     //This function changes the rotation of the div#wheel element.
     inputUpdate(angle){
         // Debugging Tool: document.getElementById("test").innerText = angle
         document.getElementById('wheel').style.transform = `rotate(${angle}deg)`
+        document.getElementById('wheel').style["-webkit-"+"transform"] = `rotate(${angle}deg)`
+        document.getElementById('wheel').style["-moz-"+"transform"] = `rotate(${angle}deg)`
+        document.getElementById('wheel').style["-o-"+"transform"] = `rotate(${angle}deg)`
+
     }
 
-    
+
+    touchToSpinWheel(e) {
+        const wheel = document.getElementById("wheel")
+        x = e.touches[0].clientX - wheel.offsetLeft - (wheel.clientHeight) / 2;
+        y = e.touches[0].clientY - wheel.offsetTop - (wheel.clientWidth) / 2;
+        console.log(e.type, x, y)
+        // Goal: Convert coordinates to 360 degree spin.
+        // Goal: Grab coordinates only while mouse is down
+        // Notes: Uses arc tangent to grab math. Since degrees goes from
+        // -180 degrees to +180 degrees, we use mod function.
+        if (down === 1) {
+            absoluteDegree = Math.atan2(y, x) * (180 / Math.PI)
+            absoluteDegree = (absoluteDegree + 360) % 360
+            //Goal: When going from 345 degrees to 15 degrees, add one to the
+            //rotation counter.  When going from 15 to 345, subtract one.
+            absOffsetDegree = (absoluteDegree - startingDegree + 360) % 360
+            //Keep track of number of 360 degreerotations
+            if (previousAbsOffsetDegree > 345 && absOffsetDegree < 15) {
+                numberRotationsCounter++
+            }
+            if (previousAbsOffsetDegree < 15 && absOffsetDegree > 345) {
+                numberRotationsCounter--
+            }
+            //Goal: Record previous state so we know when to increment numberRotationCounter.
+            previousAbsOffsetDegree = absOffsetDegree
+            //final degree = number of rotations plus (absoluteDegree minus startingdegree)
+            infiniteDegrees = numberRotationsCounter * 360 + absOffsetDegree
+            //update CSS to rotate wheel
+            this.inputUpdate(infiniteDegrees)
+            //update drink name based on wheel's infinitedegree angle
+            this.wheelSelectorByDegree(infiniteDegrees).then(function (result) {
+                document.getElementById("drinkname").innerText = result.name
+                document.getElementById("drinkname").style.color = result.color
+            })
+        }
+    }
+
+
     //This event function tracks "mouseover"
     mouseToSpinWheel(e){
+        e.preventDefault()
         const wheel = document.getElementById("wheel")
         // Goal: grab x and y coordinates
         // Notes: Position (0, 0) is at the center of the wheel
         // Math: x-coordinate = cursor position - div offset - half div size
-        x = e.clientX - wheel.offsetLeft - (wheel.clientHeight)/2;
-        y = e.clientY - wheel.offsetTop - (wheel.clientWidth)/2;
+        if (e.type === "mousemove") {
+            console.log(e.type)
+            x = e.clientX - wheel.offsetLeft - (wheel.clientHeight) / 2;
+            y = e.clientY - wheel.offsetTop - (wheel.clientWidth) / 2;
+        } else if (e.type === "touchmove") {
+            x = e.touches[0].clientX - wheel.offsetLeft - (wheel.clientHeight) / 2;
+            y = e.touches[0].clientY - wheel.offsetTop - (wheel.clientWidth) / 2;
+            console.log(e.type)
+
+        }
         // Goal: Grab Starting Degree so we offset it
         if (down !== 1){
             startingDegree = Math.atan2(y,x)*(180/Math.PI)
@@ -190,6 +247,10 @@ class WheelSelector extends React.Component{
         document.getElementById("wheel").addEventListener("mousedown", this.setDownTrue)
         document.getElementById("wheel").addEventListener("mouseup", this.setDownFalse)
         document.getElementById("search").addEventListener("click", this.routeWithNewBaseAlcohol)
+        document.getElementById("wheel").addEventListener("touchmove", this.touchToSpinWheel, false)
+        document.getElementById("wheel").addEventListener("touchstart", (ev)=>{ev.preventDefault(); this.setDownTrue(ev)}, false)
+        document.getElementById("wheel").addEventListener("touchend", (ev)=>{ev.preventDefault(); this.setDownFalse(ev)}, false)
+
 
 
     }
