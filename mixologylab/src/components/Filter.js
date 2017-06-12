@@ -9,6 +9,7 @@ import React from 'react'
 import './Filter.css'
 import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import '../css/font-awesome-4.7.0/css/font-awesome.min.css'
 
 class FilterPage extends React.Component{
 
@@ -16,7 +17,7 @@ class FilterPage extends React.Component{
       updateTaste: PropTypes.func,
       baseAlcohol: PropTypes.string,
       baseAlcoholAPIReturn: PropTypes.object,
-      //tasteFilter: PropTypes.array
+      tasteFilter: PropTypes.array,
       drinksLists: PropTypes.array,
     };
 
@@ -63,19 +64,25 @@ class FilterPage extends React.Component{
             <div>
                 <h1 className="drinkFilterTitle">Select Tastes</h1>
                 <p>Selected Base Alcohol: {selectedBaseAlcohol.toUpperCase()}</p>
+                {selectedBaseAlcohol === 'LOADING...' ? <div className="sk-folding-cube"><br />
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
+                  </div>:
                 <div className="container" >
-                
-                <ul>
-                  {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
-                </ul>
-                <Link to={'/drink-menu'}>
-                    <div className="displayDrinkButton">
-                             <span id="displayDrinkButton">
-                                 {drinksLists.length !== 0 ? drinksLists.length : 0} Drinks
-                             </span>
-                    </div>
-                </Link>
+                  <ul>
+                    {selectedBaseAlcohol !== 'LOADING...' ? tasteFilterList : <p></p>}
+                  </ul>
+                  <Link to={'/drink-menu'}>
+                      <div className="displayDrinkButton">
+                               <span id="displayDrinkButton">
+                                   {tasteFilter.length === 0 ?  selectedBaseAlcoholCount : drinksLists.length } Drinks
+                               </span>
+                      </div>
+                  </Link>
                 </div>
+              }
             </div>
         )
 
