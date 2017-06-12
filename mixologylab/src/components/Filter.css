@@ -357,3 +357,9 @@ body {
 .loadingIcon{
   padding-top:50px;
 }
+
+.selectedBaseAlcohol{
+  font-family: sans-serif;
+  font-size: 2em;
+  color: #fee9f7;
+}

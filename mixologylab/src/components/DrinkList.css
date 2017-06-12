@@ -10,7 +10,7 @@
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
-    align-items: center;
+    align-items: left;
     -webkit-justify-content: center;
     justify-content: center;
     -webkit-flex-wrap: wrap;
@@ -41,4 +41,10 @@
 
 .sortIcons{
     padding-top: 30px;
+}
+
+@media screen and (max-width: 666px){
+    .menucontainer{
+        width: 444px;
+    }
 }

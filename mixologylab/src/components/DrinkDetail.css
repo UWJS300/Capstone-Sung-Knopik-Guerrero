@@ -1,115 +1,265 @@
 .drinkTitle{
     padding-top: 30px;
+    padding-bottom: 10px;
     font-size: 3.5em;
     letter-spacing: 8px;
     font-family: Lobster,sans-serif;
     color: #a6f6fe;
 }
 
-.drinkDetailContainer{
-    display: block;
-    width: 600px;
-    background-color: white;
-    margin: auto;
-    position: relative;
-    padding:0;
+@media screen and (min-width: 750px) {
+    .drinkDetailContainer {
+        display: block;
+        width: 600px;
+        background-color: white;
+        margin: auto;
+        position: relative;
+        padding: 0;
+    }
+
+    .drinkDetailImage {
+        width: 300px;
+        position: absolute;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        animation: drinkImage;
+        animation-duration: 2s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes drinkImage {
+        0% {
+            left: -3000px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            left: 0;
+            opacity: 1;
+        }
+    }
+
+
+    .drinkDetailIngredients {
+        width: 300px;
+        top: 40px;
+        position: absolute;
+        text-align: left;
+        left: 300px;
+        margin: 0;
+        font-size: 1.15em;
+        line-height: 1.8em;
+        padding: 10px 50px 10px 30px;
+        animation: drinkIngredients;
+        animation-duration: 2s;
+        animation-delay: 0.5s;
+        opacity: 0;
+        font-family: Georgia, serif;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes drinkIngredients {
+        0% {
+            left: 3300px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            left: 300px;
+            opacity: 1;
+        }
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .drinkDetailVideoContainer {
+        display: inline-block;
+        position: absolute;
+        top: 550px;
+        left: 50px;
+        width: 500px;
+        margin: auto;
+        animation: drinkDescription;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    .drinkDetailDescription {
+
+        border: 1px solid darkslategray;
+        padding: 10px;
+        line-height: 1.5em;
+        font-size: 1.4em;
+        font-family: serif;
+
+    }
+
+    .drinkDetailVideo {
+        padding-top: 30px;
+        border: hidden;
+    }
+
+    @keyframes drinkDescription {
+        0% {
+            top: 5500px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            top: 500px;
+            opacity: 1;
+        }
+    }
+
+    .videoTitle {
+        padding-top: 10px;
+        padding-bottom: 30px;
+        font-family: Playball, sans-serif;
+        margin: auto;
+        font-size: 2.7em;
+        letter-spacing: 3px;
+        color: lightgoldenrodyellow;
+    }
 }
+@media screen and (max-width: 749px) {
+    .drinkDetailContainer {
+        display: block;
+        width: 400px;
+        background-color: white;
+        margin: auto;
+        position: relative;
+        padding: 0;
+    }
+
+    .drinkDetailImage {
+        width: 150px;
+        height:250px;
+        position: absolute;
+        margin: auto;
+        padding: 0;
+        animation: drinkImage;
+        animation-duration: 2s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes drinkImage {
+        0% {
+            left: -3000px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            left: 0px;
+            opacity: 1;
+        }
+    }
 
 
-.drinkDetailImage{
-    width:300px;
-    position: absolute;
-    left: 0;
-    margin:0;
-    padding:0;
-    animation: drinkImage;
-    animation-duration: 2s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
+    .drinkDetailIngredients {
+        width: 250px;
+        top: 0px;
+        position: absolute;
+        text-align: left;
+        left: 110px;
+        margin: 0;
+        font-size: 1.15em;
+        line-height: 1.8em;
+        padding: 10px 50px 10px 30px;
+        animation: drinkIngredients;
+        animation-duration: 2s;
+        animation-delay: 0.5s;
+        opacity: 0;
+        font-family: Georgia, serif;
+        animation-fill-mode: forwards;
+    }
 
-@keyframes drinkImage{
-    0%{ left: -3000px;
-        opacity: 0;}
-    50% {opacity: 1;}
-    100% {left: 0;
-        opacity:1;}
-}
+    @keyframes drinkIngredients {
+        0% {
+            left: 3300px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            left: 110px;
+            opacity: 1;
+        }
+    }
 
+    li {
+        list-style: none;
+    }
 
-.drinkDetailIngredients{
-    width:300px;
-    top: 40px;
-    position: absolute;
-    text-align: left;
-    left: 300px;
-    margin:0;
-    font-size: 1.15em;
-    line-height: 1.8em;
-    padding: 10px 50px 10px 30px;
-    animation: drinkIngredients;
-    animation-duration: 2s;
-    animation-delay: 0.5s;
-    opacity: 0;
-    font-family: Georgia, serif;
-    animation-fill-mode: forwards;
-}
+    .drinkDetailVideoContainer {
+        display: inline-block;
+        position: absolute;
+        top: 300px;
+        left: 0px;
+        width: 400px;
+        margin: auto;
+        animation: drinkDescription;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
 
-@keyframes drinkIngredients{
-    0%{ left: 3300px;
-        opacity:0;}
-    50% {opacity:1;}
-    100%{ left: 300px;
-            opacity:1;}
-}
+    .drinkDetailDescription {
 
-li {
-    list-style: none;
-}
+        border: 1px solid darkslategray;
+        padding: 10px;
+        width: 350px;
+        line-height: 1.5em;
+        font-size: 1.4em;
+        font-family: serif;
+        margin: auto;
 
-.drinkDetailVideoContainer{
-    display: inline-block;
-    position: absolute;
-    top: 550px;
-    left: 50px;
-    width: 500px;
-    margin: auto;
-    animation: drinkDescription;
-    animation-duration: 2s;
-    animation-delay: 1s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
+    }
 
-.drinkDetailDescription{
+    .drinkDetailVideo {
+        padding-top: 30px;
+        border: hidden;
+        width:350px;
+        margin:auto;
+    }
 
-    border: 1px solid darkslategray;
-    padding: 10px;
-    line-height: 1.5em;
-    font-size: 1.4em;
-    font-family: serif;
+    @keyframes drinkDescription {
+        0% {
+            top: 5500px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            top: 300px;
+            opacity: 1;
+        }
+    }
 
-}
-
-.drinkDetailVideo{
-    padding-top: 30px;
-    border: hidden;
-}
-
-@keyframes drinkDescription{
-    0% {top: 5500px;
-        opacity:0;}
-    50% {opacity:1;}
-    100% {top: 500px;
-        opacity:1;}
-}
-
-.videoTitle{
-    padding-top: 10px;
-    padding-bottom: 30px;
-    font-family:  Playball, sans-serif;
-    margin: auto;
-    font-size: 2.7em;
-    letter-spacing: 3px;
-    color: lightgoldenrodyellow;
+    .videoTitle {
+        padding-top: 10px;
+        padding-bottom: 30px;
+        font-family: Playball, sans-serif;
+        margin: auto;
+        font-size: 2.7em;
+        letter-spacing: 3px;
+        color: lightgoldenrodyellow;
+    }
 }

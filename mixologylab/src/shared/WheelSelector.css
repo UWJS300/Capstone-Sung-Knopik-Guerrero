@@ -154,3 +154,13 @@ h1 span {
     90% {border-color: #023c95;
         color: #006295;}
 }
+
+@media screen and (max-height: 580px){
+    .drinknamecontainer{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .search{
+        margin-top: 25px;
+    }
+}

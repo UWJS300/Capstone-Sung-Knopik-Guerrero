@@ -63,7 +63,7 @@ class FilterPage extends React.Component{
         return(
             <div>
                 <h1 className="drinkFilterTitle">Select Tastes</h1>
-                <p>Selected Base Alcohol: {selectedBaseAlcohol.toUpperCase()}</p>
+               
                 {selectedBaseAlcohol === 'LOADING...' ? <div className="sk-folding-cube"><br />
                     <div className="sk-cube1 sk-cube"></div>
                     <div className="sk-cube2 sk-cube"></div>
