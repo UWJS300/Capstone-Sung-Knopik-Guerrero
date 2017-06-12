@@ -52,7 +52,7 @@ class Root extends React.Component{
     updateBaseAlcohol (baseAlcoholName) {
       //jquery api call with jsonp
       //grabs the data then sets returned data as state
-      $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=6b80f06201e8408f9502964f3c2fdd4c', ( result ) => {
+      $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=ed798e20791f48579eb3f6b5680214c3', ( result ) => {
         this.setState({
           baseAlcoholAPIReturn : result,
           baseAlcohol : baseAlcoholName,

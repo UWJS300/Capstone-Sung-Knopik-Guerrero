@@ -1,9 +1,9 @@
 .drinkTitle{
     padding-top: 30px;
-    font-size: 2.5em;
-    letter-spacing: 5px;
+    font-size: 3.5em;
+    letter-spacing: 8px;
     font-family: Lobster,sans-serif;
-    color: #638cd1;
+    color: #a6f6fe;
 }
 
 .drinkDetailContainer{
@@ -14,7 +14,6 @@
     position: relative;
     padding:0;
 }
-
 
 
 .drinkDetailImage{
@@ -68,23 +67,33 @@ li {
     list-style: none;
 }
 
-.drinkDetailDescription{
+.drinkDetailVideoContainer{
     display: inline-block;
     position: absolute;
     top: 550px;
     left: 50px;
     width: 500px;
     margin: auto;
-    border: 1px solid darkslategray;
-    padding: 10px;
-    line-height: 1.5em;
-    font-size: 1.4em;
-    font-family: serif;
     animation: drinkDescription;
     animation-duration: 2s;
     animation-delay: 1s;
     opacity: 0;
     animation-fill-mode: forwards;
+}
+
+.drinkDetailDescription{
+
+    border: 1px solid darkslategray;
+    padding: 10px;
+    line-height: 1.5em;
+    font-size: 1.4em;
+    font-family: serif;
+
+}
+
+.drinkDetailVideo{
+    padding-top: 30px;
+    border: hidden;
 }
 
 @keyframes drinkDescription{
@@ -93,4 +102,14 @@ li {
     50% {opacity:1;}
     100% {top: 500px;
         opacity:1;}
+}
+
+.videoTitle{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    font-family:  Playball, sans-serif;
+    margin: auto;
+    font-size: 2.7em;
+    letter-spacing: 3px;
+    color: lightgoldenrodyellow;
 }

@@ -20,7 +20,10 @@
     position: relative;
 }
 
-
+.drinkRating{
+    color: #df82ec;
+    font-size: 0.9em;
+}
 
 /*This part shows the square*/
 
@@ -35,6 +38,8 @@
     position: absolute;
 	text-align: center;
 	top: 0; right: 0; left: 0; bottom: 0;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #adcbfe;
 }
 
 /*This part is the hidden until on hover*/
