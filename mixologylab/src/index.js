@@ -51,20 +51,20 @@ class Root extends React.Component {
     //when one of the base alcohol is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the home.js through props
     updateBaseAlcohol(baseAlcoholName) {
-        //jquery api call with jsonp
-        //grabs the data then sets returned data as state
-        /*$.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=ed798e20791f48579eb3f6b5680214c3', ( result ) => {
+        //USE AJAX CODE FOR LOCALHOST DEVELOPMENT
+        $.get( 'https://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=ed798e20791f48579eb3f6b5680214c3', ( result ) => {
          this.setState({
          baseAlcoholAPIReturn : result,
          baseAlcohol : baseAlcoholName,
          })
-         }, 'jsonp');*/
-        window.addb.drinks().withIngredient(baseAlcoholName).loadSet((result)=> {
+         }, 'jsonp');
+        //USE window.addb to load site using mixologylab.io domain.
+       /*window.addb.drinks().ingredientTypes(baseAlcoholName).loadSet((result)=> {
             this.setState({
                 baseAlcoholAPIReturn: result,
                 baseAlcohol: baseAlcoholName
             })
-        })
+        })*/
     }
 
     /*ignore jslint end*/
