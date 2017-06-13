@@ -20,9 +20,6 @@ class App extends Component {
 
     componentDidMount(){
         document.getElementById("title").addEventListener("click", this.resetAppToHomePage)
-    }
-
-    componentDidMount(){
         document.getElementById("infoopen").addEventListener("click", (ev)=>{
             ev.preventDefault()
             document.getElementById("infobox").style.left = "5px"
@@ -63,7 +60,7 @@ class App extends Component {
                 <h3 className="infoboxTitle">Features</h3>
 
               <div className="infoboxList">Built on React</div>
-              <div className="infoboxList">Blazing Fast CSS Rendering</div>
+              <div className="infoboxList">Blazing Fast CSS Wheel</div>
               <div className="infoboxList">Responsive Layout</div>
               <div className="infoboxList">Touch Device Compatible</div>
 

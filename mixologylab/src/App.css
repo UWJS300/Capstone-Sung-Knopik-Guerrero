@@ -76,7 +76,7 @@
 .infoboxList{
   text-align: center;
   color: #2b81af;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .infoboxTitle{
@@ -95,5 +95,6 @@
 
 .closebutton{
   text-align: right;
-  width: 90%
+  width: 90%;
+  margin: 0; padding:0;
 }
