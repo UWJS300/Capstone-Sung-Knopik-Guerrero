@@ -1,16 +1,16 @@
 /**
  * Edited by samguerrero on 5/31/2017.
-  - added state and state updating functions
+ - added state and state updating functions
  * Edited by samguerrero on 6/3/2017.
-  - display and filter api return function
+ - display and filter api return function
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 import {
-BrowserRouter as Router,
-Switch,
-Route,
+    BrowserRouter as Router,
+    Switch,
+    Route,
 } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 
@@ -24,91 +24,100 @@ import DrinkList from './components/DrinkList'
 //import css
 import './index.css';
 
-class Root extends React.Component{
+
+class Root extends React.Component {
     //insert State
-    constructor () {
-      super()
-      this.state = {
-        baseAlcohol: 'LOADING...',
-        tasteFilter: [],
-        drinksLists: [],
-        baseAlcoholAPIReturn: {},
-		sortDrinkListBy: 'name',
-      }
-      this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
-      this.updateTaste = this.updateTaste.bind(this)
-	  this.updateSortDrinkListBy = this.updateSortDrinkListBy.bind(this)
-      this.resetApp = this.resetApp.bind(this)
+    constructor() {
+        super()
+        this.state = {
+            baseAlcohol: 'LOADING...',
+            tasteFilter: [],
+            drinksLists: [],
+            baseAlcoholAPIReturn: {},
+            sortDrinkListBy: 'name',
+        }
+        this.updateBaseAlcohol = this.updateBaseAlcohol.bind(this)
+        this.updateTaste = this.updateTaste.bind(this)
+        this.updateSortDrinkListBy = this.updateSortDrinkListBy.bind(this)
+        this.resetApp = this.resetApp.bind(this)
     }
 
-	updateSortDrinkListBy (sortDrinkListBy) {
-		this.setState({
-			sortDrinkListBy: sortDrinkListBy
-		})
-	}
+    updateSortDrinkListBy(sortDrinkListBy) {
+        this.setState({
+            sortDrinkListBy: sortDrinkListBy
+        })
+    }
 
     //when one of the base alcohol is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the home.js through props
-    updateBaseAlcohol (baseAlcoholName) {
-      //jquery api call with jsonp
-      //grabs the data then sets returned data as state
-      $.get( 'http://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=ed798e20791f48579eb3f6b5680214c3', ( result ) => {
-        this.setState({
-          baseAlcoholAPIReturn : result,
-          baseAlcohol : baseAlcoholName,
-        })
-      }, 'jsonp');
+    updateBaseAlcohol(baseAlcoholName) {
+        //USE AJAX CODE FOR LOCALHOST DEVELOPMENT
+        $.get( 'https://addb.absolutdrinks.com/drinks/withtype/' + baseAlcoholName + '?pageSize=10000&apiKey=ed798e20791f48579eb3f6b5680214c3', ( result ) => {
+         this.setState({
+         baseAlcoholAPIReturn : result,
+         baseAlcohol : baseAlcoholName,
+         })
+         }, 'jsonp');
+        //USE window.addb to load site using mixologylab.io domain.
+       /*window.addb.drinks().ingredientTypes(baseAlcoholName).loadSet((result)=> {
+            this.setState({
+                baseAlcoholAPIReturn: result,
+                baseAlcohol: baseAlcoholName
+            })
+        })*/
     }
 
+    /*ignore jslint end*/
     //when one of the taste is clicked, it submits a form, which this function is the onSubmit for
     //this function was passed to the filter.js through props
-    updateTaste (tasteName) {
-      //If the taste is already added to the state, remove it, otherwise add it
-      const newTasteState = this.state.tasteFilter
-      if (newTasteState.includes(tasteName)) {
-        const index = newTasteState.indexOf(tasteName)
-        newTasteState.splice(index, 1)
-      } else {
-        newTasteState.push(tasteName)
-      }
-      //
-      let filteredDrinks = []
-      if (newTasteState.length === 1) {
-        const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
-        const filteredDrinksForOne = allDrinksUnderBase.filter(function(item) {
-          const allTastes = item.tastes.map(function(mapitem) {
-            return mapitem.id
-          })
-          return allTastes.includes(newTasteState[0])
-        })
-        filteredDrinks = filteredDrinksForOne
-      } else if (newTasteState.length > 1) {
-        filteredDrinks = []
-        const drinklistUserMatch = []
-        const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
-        allDrinksUnderBase.forEach(function(value) {
-            const drinkTasteUserTasteMatch = []
-            const allTastes = value.tastes.map(function(mapitem) {
-              return mapitem.id
+    updateTaste(tasteName) {
+        //If the taste is already added to the state, remove it, otherwise add it
+        const newTasteState = this.state.tasteFilter
+        if (newTasteState.includes(tasteName)) {
+            const index = newTasteState.indexOf(tasteName)
+            newTasteState.splice(index, 1)
+        } else {
+            newTasteState.push(tasteName)
+        }
+        //
+        let filteredDrinks = []
+        if (newTasteState.length === 1) {
+            const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
+            const filteredDrinksForOne = allDrinksUnderBase.filter(function (item) {
+                const allTastes = item.tastes.map(function (mapitem) {
+                    return mapitem.id
+                })
+                return allTastes.includes(newTasteState[0])
             })
-            allTastes.forEach(function(item) {
-              if (newTasteState.includes(item)) {
-                drinkTasteUserTasteMatch.push(true)
-              }
+            filteredDrinks = filteredDrinksForOne
+        } else if (newTasteState.length > 1) {
+            filteredDrinks = []
+            const drinklistUserMatch = []
+            const allDrinksUnderBase = this.state.baseAlcoholAPIReturn.result
+            allDrinksUnderBase.forEach(function (value) {
+                const drinkTasteUserTasteMatch = []
+                const allTastes = value.tastes.map(function (mapitem) {
+                    return mapitem.id
+                })
+                allTastes.forEach(function (item) {
+                    if (newTasteState.includes(item)) {
+                        drinkTasteUserTasteMatch.push(true)
+                    }
+                })
+                if (allTastes.length === drinkTasteUserTasteMatch.length && newTasteState.length === allTastes.length) {
+                    drinklistUserMatch.push(value)
+                }
             })
-            if (allTastes.length === drinkTasteUserTasteMatch.length && newTasteState.length === allTastes.length) {
-              drinklistUserMatch.push(value)
-            }
+            filteredDrinks = drinklistUserMatch
+        }
+        //set the state of filtered api and checked taste list
+        this.setState({
+            drinksLists: filteredDrinks,
+            tasteFilter: newTasteState
         })
-        filteredDrinks = drinklistUserMatch
-      }
-      //set the state of filtered api and checked taste list
-      this.setState({
-        drinksLists: filteredDrinks,
-        tasteFilter: newTasteState
-      })
     }
-    resetApp(){
+
+    resetApp() {
         this.setState({
             baseAlcohol: 'LOADING...',
             tasteFilter: [],
@@ -119,8 +128,8 @@ class Root extends React.Component{
     }
 
 
-    render(){
-        return(
+    render() {
+        return (
             <Router>
                 <App resetApp={this.resetApp}>
                     <Switch>

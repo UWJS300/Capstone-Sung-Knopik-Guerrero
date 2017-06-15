@@ -2,7 +2,33 @@
 
 ### Authors
 
-Sam Guerrero, Clifford Knopik, and Eddie Sung
+-Eddie Sung
+-Sam Guerrero
+-Clifford Knopik
+
+
+### Application Features
+
+Built on React. Emphasis on clean UI design. Responsive for mobile devices. Built to have reusable React Components.
+
+####Wheel
+-Custom Logic
+-Mouse Draggable
+-Touch Screen capable
+-Fast rendering using pure Javascript and CSS
+-Reusable React Component (wheel selector)
+
+####Select Tastes
+-Multiple overlapping sorting filters
+-Instant update of drink count
+
+####Drink List
+-Sortable
+-Additional info on hover
+-Reusable React Component (drink squares)
+
+####Drink Display
+-CSS movements to enhance UI
 
 ### Install
 ```
@@ -48,6 +74,3 @@ git branch -D [branch name]  //delete the branch that has been merged
 
 ```
 
-### Notes
-
-TBD
